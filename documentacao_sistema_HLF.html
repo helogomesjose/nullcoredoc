@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentação do Sistema – Plataforma Unificada de IA • HLF Soluções LTDA</title>
+<style>
+:root{ --bg:#ffffff; --fg:#111111; --muted:#555; --accent:#0a66c2; --soft:#f5f7fb; --line:#e6e8ee; --good:#2e7d32; --warn:#ef6c00; --bad:#b71c1c; }
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0c0f14; --fg:#e8eef7; --muted:#a8b3c7; --accent:#5ab0ff; --soft:#151a22; --line:#1d2430; }
+}
+html,body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;}
+main{max-width:1100px;margin:0 auto;padding:28px 20px 60px;}
+header.hero{padding:28px 0 4px;border-bottom:1px solid var(--line);}
+h1{font-size:clamp(1.6rem,2.4vw,2.2rem);margin:0 0 4px}
+h2{font-size:clamp(1.2rem,2vw,1.6rem);margin:22px 0 10px}
+h3{font-size:1.05rem;margin:18px 0 8px}
+.small{color:var(--muted);font-size:0.925rem}
+kbd{background:var(--soft);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px;font-size:0.9em}
+code, pre{background:var(--soft);border:1px solid var(--line);border-radius:10px;color:var(--fg)}
+pre{padding:14px;overflow:auto}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 22px}
+.nav a{padding:6px 10px;background:var(--soft);border:1px solid var(--line);border-radius:999px}
+.callout{border:1px solid var(--line);background:var(--soft);padding:14px;border-radius:10px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--soft);font-size:.85em;color:var(--muted)}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+ul.checklist>li::marker{content:"✔ "; color:var(--good);}
+ul.warn>li::marker{content:"• "; color:var(--warn);}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid var(--line);padding:8px;vertical-align:top}
+.figure{text-align:center;margin:16px auto}
+.figure img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+details{border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:var(--soft)}
+summary{cursor:pointer;font-weight:600}
+footer{margin-top:36px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <h1>Documentação do Sistema — Plataforma Unificada de Inteligência Artificial</h1>
+  <p class="small">HLF Soluções LTDA • Revisão 26/08/2025 • Este documento descreve arquitetura, módulos, APIs e procedimentos para implantação, operação e homologação.</p>
+  <nav class="nav small">
+    <a href="#visao">Visão Geral</a>
+    <a href="#arquitetura">Arquitetura</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#seguranca">Segurança & SSO</a>
+    <a href="#mlops">MLOps / ModelOps</a>
+    <a href="#servicos">Serviços de Modelos</a>
+    <a href="#rag">RAG</a>
+    <a href="#playground">Playground</a>
+    <a href="#observabilidade">Observabilidade</a>
+    <a href="#dados">Dados & Formatos</a>
+    <a href="#implantacao">Implantação</a>
+    <a href="#api">APIs</a>
+    <a href="#capacidade">Capacidade & SLA</a>
+    <a href="#homologacao">Homologação</a>
+    <a href="#conformidade">Conformidade com Edital</a>
+  </nav>
+</header>
+
+<section id="visao">
+  <h2>1. Visão Geral</h2>
+  <p>A plataforma da HLF Soluções LTDA é um produto corporativo <strong>cloud-native</strong> que integra autenticação (OIDC/SAML/Kerberos), MLOps/ModelOps, execução de modelos multimodais (texto, imagem, áudio), <abbr title="Retrieval Augmented Generation">RAG</abbr>, playground, monitoramento e retreinamento automático. É entregue como solução única, com UI + API Gateway, e suporta ambientes <em>dev</em>, <em>homolog</em> e <em>prod</em> em nuvem privada SERPRO.</p>
+  <div class="callout"><strong>Objetivos principais:</strong>
+    <ul class="checklist">
+      <li>Operação multi-tenant com isolamento e RBAC granular.</li>
+      <li>MLOps completo: versionamento, experimentos, pipelines e catálogo de modelos.</li>
+      <li>Execução multimodal, RAG e oferta síncrona/assíncrona, em lote e agendada.</li>
+      <li>Monitoramento com métricas, logs, alertas e retreinamento por gatilhos.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="arquitetura">
+  <h2>2. Arquitetura de Referência</h2>
+  <p>Camadas: Portal/Ingress, Identidade/SSO, Plano de Controle (Kubernetes/Service Mesh), Serviços de Modelos, MLOps & Workflows, RAG & Indexação, Playground, Observabilidade e Dados/Armazenamento.</p>
+  <div class="figure">
+    <em>(Diagrama de arquitetura não disponível nesta cópia)</em>
+  </div>
+</section>
+
+<section id="modulos">
+  <h2>3. Módulos</h2>
+  <div class="grid">
+    <div><h3>Portal Unificado</h3><p>UI (React/Next) + API Gateway/Ingress, catálogo de modelos, gerenciamento de tokens, playground multimodal.</p></div>
+    <div><h3>Identidade & SSO</h3><p>Keycloak integrado ao Login Único SERPRO (OIDC/SAML) + Kerberos cross‑realm. RBAC por grupos/usuários.</p></div>
+    <div><h3>Plano de Execução</h3><p>Kubernetes multi‑tenant, namespaces por ambiente, quotas, policies; service mesh; HPA e escalabilidade.</p></div>
+    <div><h3>MLOps/ModelOps</h3><p>GitLab (CI/CD), DVC (datasets), MLflow (experimentos/modelos), Kubeflow/Airflow (pipelines).</p></div>
+    <div><h3>Serviço de Modelos</h3><p>LLMs via Ollama/vLLM/TGI; visão/áudio via Triton/TorchServe/Whisper; compatível com GPU/CPU.</p></div>
+    <div><h3>RAG</h3><p>Orquestração LangChain; vetores em Qdrant/Milvus/Weaviate; coleções com controle de acesso.</p></div>
+    <div><h3>Observabilidade</h3><p>Prometheus, Grafana, ELK, Alertmanager; métricas de latência, throughput e qualidade de inferência.</p></div>
+    <div><h3>Dados & Storage</h3><p>MinIO (S3), PostgreSQL, Elastic; compatível com Hadoop/Spark; backups, catálogo e Vault/Secrets.</p></div>
+  </div>
+</section>
+
+<section id="seguranca">
+  <h2>4. Segurança & SSO</h2>
+  <ul>
+    <li><strong>OIDC Authorization Code Flow</strong> com PKCE quando client público.</li>
+    <li><strong>SAML 2.0</strong> com assinatura e criptografia do payload.</li>
+    <li><strong>Kerberos cross‑realm</strong> para integração com serviços legados.</li>
+    <li><strong>RBAC granular</strong>: políticas por projeto, dataset, modelo e recursos (CPU/GPU).</li>
+    <li><strong>Criptografia</strong> em trânsito (TLS) e <strong>segredos</strong> no Vault/Secrets.</li>
+    <li><strong>Timeouts de sessão configuráveis</strong>; auditoria de login e ações administrativas.</li>
+  </ul>
+  <details><summary>Mapeamento de Grupos</summary>
+    <pre><code>grupos:
+  admin: permissões totais (plataforma, quotas, auditoria)
+  mlops: criar/editar pipelines, registrar modelos, publicar endpoints
+  cientista: criar experimentos, consumir dados aprovados, publicar protótipos
+  dev: integrar aplicações aos endpoints e SDKs
+  leitor: acesso somente leitura a dashboards e relatórios
+</code></pre>
+  </details>
+</section>
+
+<section id="mlops">
+  <h2>5. MLOps / ModelOps</h2>
+  <ul class="checklist">
+    <li>Versionamento de código (GitLab) e de datasets (DVC/git-lfs).</li>
+    <li>MLflow para <em>experiments</em>, <em>runs</em> e <em>model registry</em>.</li>
+    <li>Pipelines com Kubeflow/Airflow (pré-processamento, treino, avaliação, empacotamento, deploy).</li>
+    <li>Catálogo de artefatos e <em>lineage</em> (datas, parâmetros, dados de treino/inferência).</li>
+  </ul>
+  <details><summary>Exemplo de pipeline (YAML)</summary>
+  <pre><code>pipeline:
+  name: treino-llm-rag
+  steps:
+    - extract: s3://datasets/corpus/
+    - chunk: size=1024, overlap=128
+    - embed: model=text-embedding-3-large, store=qdrant://rag-hlf
+    - train: framework=transformers, epochs=2, lr=2e-5, gpu=1
+    - eval: tasks=[GLUE, SuperGLUE], rag_metrics=[precision@k, mrr]
+    - package: format=onnx
+    - deploy: env=homolog, autoscale=cpu:75%,gpu:80%
+</code></pre>
+  </details>
+</section>
+
+<section id="servicos">
+  <h2>6. Serviço de Modelos (Inferência)</h2>
+  <p>Modelos publicados ficam disponíveis via API em rotas padronizadas com controle de versão.</p>
+  <pre><code>POST /api/modelos/&lt;nome&gt;/inferir
+Authorization: Bearer &lt;token&gt;
+{
+  "inputs": "Explique o PNLD em 3 pontos.",
+  "parameters": {"temperature": 0.3, "max_tokens": 512},
+  "stream": true
+}</code></pre>
+  <p>Runtime suportado: Ollama, vLLM, TGI (LLMs); Triton/TorchServe (visão); Whisper/Vosk (áudio). Suporte a GPU e quantização.</p>
+</section>
+
+<section id="rag">
+  <h2>7. RAG & Indexação</h2>
+  <ul>
+    <li><strong>Ingestão</strong>: conectores (S3, pastas, sites, bases relacionais), chunking, limpeza, extração de metadados.</li>
+    <li><strong>Embeddings</strong> configuráveis; vetores em Qdrant/Milvus/Weaviate.</li>
+    <li><strong>Consultas</strong>: híbridas (BM25 + denso), filtros por ACLs, <em>reranking</em>.</li>
+  </ul>
+  <pre><code>POST /api/rag/consultar
+{
+  "consulta": "Quais os requisitos de SSO do edital?",
+  "colecao": "edital-serpro",
+  "top_k": 5,
+  "rerank": true
+}</code></pre>
+</section>
+
+<section id="playground">
+  <h2>8. Playground Multimodal</h2>
+  <p>Ambiente interativo para <strong>texto, chat, imagem e áudio</strong>, com salvamento de sessões e métricas. Suporte a anexos, histórico, <em>prompt templates</em> e avaliação subjetiva.</p>
+</section>
+
+<section id="observabilidade">
+  <h2>9. Observabilidade, Métricas e Retreinamento</h2>
+  <ul>
+    <li>Métricas: latência P50/P95/P99, throughput, taxa de erro, <em>toxicity</em> e <em>drift</em> (quando aplicável).</li>
+    <li>Dashboards: Grafana; Logs e auditoria: ELK; Alertas: Alertmanager/Prometheus.</li>
+    <li>Retreinamento: gatilhos por <em>drift</em>, queda de qualidade, calendário ou volume de dados.</li>
+  </ul>
+  <pre><code>POST /api/retreino/disparar
+{"modelo": "llm-rag-ptbr", "motivo": "queda_precision@10", "minimo_dados": 5000}</code></pre>
+</section>
+
+<section id="dados">
+  <h2>10. Dados, Formatos e Big Data</h2>
+  <ul>
+    <li>Armazenamento de artefatos em MinIO (S3) e metadados em PostgreSQL/Elastic.</li>
+    <li>Export/Import de modelos: <code>onnx</code>, <code>safetensors</code>, <code>pb</code>, <code>pkl</code>, <code>joblib</code>, <code>h5</code>, <code>pmml</code>, <code>pytorch</code>, <code>tensorflow</code>, <code>mllib</code>.</li>
+    <li>Compatibilidade com Hadoop/Spark para treinamento/inferência distribuídos.</li>
+  </ul>
+</section>
+
+<section id="implantacao">
+  <h2>11. Implantação (Kubernetes)</h2>
+  <ol>
+    <li>Provisionar cluster Kubernetes (multi‑AZ) com nós GPU quando aplicável.</li>
+    <li>Instalar <em>Ingress Controller</em>, <em>Service Mesh</em>, <em>Cert‑Manager</em> e <em>External‑DNS</em> (se necessário).</li>
+    <li>Instalar subsistemas: Keycloak, MinIO, PostgreSQL, Elastic, Prometheus, Grafana, MLflow, DVC (server opcional), Airflow/Kubeflow, Qdrant/Milvus/Weaviate, Ollama/vLLM/TGI, Triton/TF‑Serving.</li>
+    <li>Aplicar <em>Namespaces</em> (<code>dev</code>, <code>hml</code>, <code>prod</code>), <em>ResourceQuotas</em>, <em>LimitRanges</em> e RBAC.</li>
+    <li>Configurar OIDC/SAML e Kerberos no Keycloak para Login Único SERPRO.</li>
+    <li>Publicar portais, APIs e dashboards; configurar backups e políticas de retenção.</li>
+  </ol>
+  <details><summary>Exemplo de <code>values.yaml</code> (trecho)</summary>
+  <pre><code>global:
+  domain: ia.hlf.local
+  oidc:
+    issuer: https://login.serpro.gov.br/realms/serpro
+    clientId: hlf-plataforma
+    usePKCE: true
+security:
+  kerberos:
+    enabled: true
+    realm: SERPRO.GOV.BR
+workspaces:
+  - name: dev
+  - name: homolog
+  - name: prod
+rag:
+  vectorstore: qdrant
+  index:
+    collection: contratos-edital
+models:
+  runtimes:
+    - name: ollama
+    - name: vllm
+    - name: tgi
+observability:
+  prometheus: enabled
+  grafana: enabled</code></pre>
+  </details>
+</section>
+
+<section id="api">
+  <h2>12. APIs (Especificação de Alto Nível)</h2>
+  <details open><summary>Autenticação</summary>
+  <pre><code>POST /api/auth/token  # OIDC/SAML: troca de código por token (Authorization Code)
+GET  /api/auth/me     # perfil e grupos do usuário
+</code></pre>
+  </details>
+  <details><summary>Modelos</summary>
+  <pre><code>GET  /api/modelos                 # listar modelos publicados
+POST /api/modelos/publicar         # publicar versão de modelo
+POST /api/modelos/&lt;nome&gt;/inferir  # realizar inferência
+GET  /api/modelos/&lt;nome&gt;/metricas # métricas de desempenho/qualidade
+</code></pre>
+  </details>
+  <details><summary>RAG</summary>
+  <pre><code>POST /api/rag/ingestao        # enviar/atualizar documentos
+POST /api/rag/consultar       # busca híbrida + geração
+GET  /api/rag/colecoes        # listar coleções
+</code></pre>
+  </details>
+  <details><summary>Operação & Observabilidade</summary>
+  <pre><code>GET  /api/monitoramento/metrics   # Prometheus exposition
+GET  /api/auditoria/eventos       # trilha de auditoria
+POST /api/retreino/disparar       # inicia job de retreinamento
+</code></pre>
+  </details>
+</section>
+
+<section id="capacidade">
+  <h2>13. Capacidade & SLA</h2>
+  <p><span class="badge">Capacidade Inicial</span> Suporte a <strong>5 sessões concorrentes ativas</strong> em Desenvolvimento/Homologação, com métricas de desempenho dentro dos parâmetros de aceitabilidade.</p>
+  <p><span class="badge">Capacidade Máxima</span> Dimensionada para Produção conforme perfil de uso acordado; inclui testes de carga com cenários de pico, <em>autoscaling</em> e <em>stress tests</em>.</p>
+  <ul>
+    <li><strong>Métricas de SLA</strong>: disponibilidade mensal, tempo de resposta P95, taxa de erro, tempo de restauração (MTTR).</li>
+    <li><strong>Planos de contingência</strong>: múltiplas zonas, <em>rollbacks</em>, <em>canary releases</em>, backups e DR.</li>
+  </ul>
+</section>
+
+<section id="homologacao">
+  <h2>14. Homologação (Amostra)</h2>
+  <p>O processo de homologação cobre <strong>todos os itens</strong> da especificação técnica: autenticação, autorização, MLOps, execução multimodal, RAG, playground, monitoramento/retreinamento, implantação multiambiente, capacidade inicial e operação em nuvem privada SERPRO. Serão apresentados: documentação oficial do “fabricante” (HLF), catálogos/manuais, <em>planilha ponto‑a‑ponto</em> e evidências funcionais.</p>
+</section>
+
+<section id="conformidade">
+  <h2>15. Conformidade com Edital</h2>
+  <ul class="checklist">
+    <li>Plataforma única e integrada (fabricante único).</li>
+    <li>Login Único SERPRO (OIDC/SAML) + Kerberos cross‑realm; RBAC granular.</li>
+    <li>MLOps completo (GitLab/DVC/MLflow) e pipelines (Airflow/Kubeflow).</li>
+    <li>Playground multimodal; métricas e benchmarks (GLUE/SuperGLUE/HELM e métricas RAG).</li>
+    <li>Implantação em dev/hml/prod; oferta síncrona/assíncrona; lote/agendada.</li>
+    <li>Monitoramento, auditoria, retreinamento por gatilhos.</li>
+    <li>Formatos interoperáveis; compatível com Hadoop/Spark.</li>
+    <li>Capacidade inicial de 5 sessões concorrentes; produção conforme dimensionamento.</li>
+    <li>Automação/documentação compatível SERPRO; IPv4/IPv6; criptografia; NAT/Firewalls.</li>
+  </ul>
+</section>
+
+<hr>
+<footer>
+  © 2025 HLF Soluções LTDA — Documento interno • Versão 1.0
+</footer>
+</main>
+</body>
+</html>
