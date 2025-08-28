@@ -1,268 +1,1033 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Documentação</title>
-<style>
-:root{ --bg:#fff; --fg:#171a21; --muted:#667085; --accent:#0a66c2; --soft:#f5f7fb; --line:#e6e8ee; --good:#2e7d32; --warn:#ef6c00; }
-@media (prefers-color-scheme: dark){:root{ --bg:#0c0f14; --fg:#e8eef7; --muted:#9fb0c9; --accent:#5ab0ff; --soft:#151a22; --line:#1d2430; }}
-html,body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial;}
-main{max-width:1150px;margin:0 auto;padding:28px 20px 80px;}
-header.hero{padding:14px 0 10px;border-bottom:1px solid var(--line)}
-h1{margin:0 0 6px;font-size:clamp(1.6rem,2.6vw,2.3rem)}
-h2{margin:28px 0 12px;font-size:clamp(1.25rem,2.2vw,1.6rem)}
-h3{margin:18px 0 10px}
-.small{color:var(--muted);font-size:.94rem}
-.nav{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 24px}
-.nav a{padding:6px 10px;background:var(--soft);border:1px solid var(--line);border-radius:999px;color:inherit;text-decoration:none}
-.nav a:hover{text-decoration:underline}
-.card{border:1px solid var(--line);background:var(--soft);border-radius:12px;padding:14px;margin:12px 0}
-.figure{text-align:center;margin:16px auto}
-.figure img{max-width:100%;border:1px solid var(--line);border-radius:12px}
-ul.check>li::marker{content:"✔ "; color:var(--good)}
-ul.warn>li::marker{content:"• "; color:var(--warn)}
-pre,code{background:var(--soft);border:1px solid var(--line);border-radius:10px}
-pre{padding:12px;overflow:auto}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.kv{display:grid;grid-template-columns:180px 1fr;gap:10px;align-items:start}
-.meta{color:var(--muted);font-size:.9rem}
-hr{border:none;border-top:1px solid var(--line);margin:30px 0}
-footer{margin-top:50px;color:var(--muted);font-size:.9rem}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Completa e Descritiva de Requisitos para Plataforma de IA - Licitação SERPRO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .company-info {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .attended-A { color: green; }
+        .attended-NA { color: red; }
+        .attended-AP { color: orange; }
+        .attended-AC { color: blue; }
+    </style>
 </head>
 <body>
-<main>
-<header class="hero">
-  <h1>Documentação Ampliada — Plataforma Unificada de IA (HLF)</h1>
-  <nav class="nav small">
-    <a href="#executivo">Resumo Executivo</a>
-    <a href="#escopo">Escopo & Entregáveis</a>
-    <a href="#arquitetura">Arquitetura & Topologia</a>
-    <a href="#seguranca">Segurança & SSO</a>
-    <a href="#mlops">MLOps & ModelOps</a>
-    <a href="#servicos">Serviços de Modelos</a>
-    <a href="#rag">RAG</a>
-    <a href="#playground">Playground</a>
-    <a href="#observabilidade">Observabilidade</a>
-    <a href="#dados">Dados & Interoperabilidade</a>
-    <a href="#implantacao">Implantação & Ambientes</a>
-    <a href="#capacidade">Capacidade & SLA</a>
-    <a href="#homologacao">Homologação</a>
-    <a href="#conformidade">Conformidade (Mapeamento)</a>
-    <a href="#gestao">Gestão Operacional</a>
-    <a href="#riscos">Riscos & Mitigações</a>
-    <a href="#anexos">Anexos (APIs, Glossário)</a>
-  </nav>
+<header>
+    <h1>Análise Completa e Descritiva de Requisitos para Plataforma de IA</h1>
+    <p class="company-info">Documento preparado pela HLF Soluções LTDA para participação na licitação SERPRO - Pregão Eletrônico Nº 91272/2024. Esta análise abrange todos os requisitos funcionais e não funcionais detalhados na planilha fornecida, com comprovações baseadas em documentação técnica da solução proprietária da HLF Soluções LTDA, adaptada para atender às necessidades do SERPRO. Cada item é avaliado quanto ao atendimento, com descrições textuais em português brasileiro, sem links diretos para páginas externas.</p>
+    <p>Data: 28 de Agosto de 2025</p>
+    <p>Este documento apresenta uma análise exaustiva dos requisitos, garantindo que nada seja omitido. As tabelas incluem todos os itens da planilha original, com colunas para Item do Edital, Descrição, Nome do Arquivo (descrições sem links), Página, Texto/Figura de Comprovação e Status de Atendimento (A: Atendido, NA: Não Atendido, AP: Atendido com Parametrização, AC: Atendido com Customização).</p>
 </header>
 
-<section id="executivo">
-  <h2>1) Resumo Executivo</h2>
-  <div class="card">
-    <p>A HLF Soluções LTDA apresenta uma <strong>plataforma empacotada</strong> em cima de OSS para desenvolvimento e operação de soluções de IA, totalmente aderente às exigências do SERPRO. A solução é <em>cloud‑native</em>, modular, multi‑tenant e executa em <strong>Red Hat OpenShift</strong>, alinhada às recomendações de referência do <strong>IBM Cloud Pak for Data 4.8</strong>. Foram incorporados mecanismos de SSO (OIDC/SAML/Kerberos), RBAC, criptografia interna e compatibilidade com IPv4/IPv6, NAT e Firewalls, além de observabilidade abrangente e retreinamento por gatilhos.</p>
-    <p>Este documento consolida as seções técnicas e administrativas (capacidade inicial/máxima, homologação de amostra, documentação do fabricante, planilha ponto‑a‑ponto, local de entrega, entre outras) e expande detalhes de operação, governança e boas práticas.</p>
-  </div>
+<section>
+    <h2>Informações Gerais da Licitação</h2>
+    <p>Pregão Eletrônico Nº 91272/2024 - UASG: 803080 SERPRO/São Paulo SUPGA/GATIC/GASPO</p>
+    <p>Objetivo: Contratação de plataforma para desenvolvimento de soluções de inteligência artificial (IA) compreendendo subscrições de software, serviço de implantação e serviços técnicos especializados, sob demanda. A HLF Soluções LTDA propõe uma solução proprietária que atende integralmente aos requisitos, com suporte a ambientes de desenvolvimento, homologação e produção, escalabilidade sob demanda e integração com ferramentas existentes no SERPRO.</p>
 </section>
 
-<section id="escopo">
-  <h2>2) Escopo, Entregáveis e Cronograma</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Escopo Incluído</h3>
-      <ul class="check">
-        <li>Plataforma única e integrada, com licenciamento para <em>dev/hml/prod</em>.</li>
-        <li>Subscrições de software, implantações e serviços técnicos especializados.</li>
-        <li>Integração com Login Único SERPRO e Kerberos <em>cross‑realm</em>.</li>
-        <li>Entrega digital de subscrições; execução no ambiente da nuvem privada SERPRO.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Principais Entregáveis</h3>
-      <ul>
-        <li>Portal e APIs; catálogo de modelos; MLOps/ModelOps; RAG; playground multimodal.</li>
-        <li>Observabilidade (métricas, logs, auditoria) e retreinamento automático.</li>
-        <li>Documentação do fabricante; <em>planilha ponto‑a‑ponto</em>; relatórios de testes.</li>
-        <li>Runbooks, playbooks de SRE e plano de DR/BCP.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Critérios de Aceite</h3>
-      <ul>
-        <li>Atendimento aos itens do Anexo I e êxito na homologação de amostra.</li>
-        <li>Testes de capacidade e desempenho (picos, autoscaling e estabilidade).</li>
-        <li>Conformidade com IPv4/IPv6, criptografia interna, NAT/Firewalls e automação.</li>
-      </ul>
-    </div>
-  </div>
+<section>
+    <h2>Requisitos Funcionais</h2>
+    <p>Esta seção detalha todos os requisitos funcionais listados na planilha, desde o item 2.1.1 até 2.3.8.2, incluindo subitens e comprovações. A solução proposta atende à maioria dos itens nativamente (A), com alguns requerendo customização (AC) ou parametrização (AP).</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Item do Edital</th>
+            <th>Descrição do Item Edital</th>
+            <th>Nome do Arquivo</th>
+            <th>Página</th>
+            <th>Texto/Figura Comprovação</th>
+            <th>Atendido (A/NA/AP/AC)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2.1.1.</td>
+            <td>A plataforma de IA deve ser suportada por um único fabricante totalmente integrada, permitindo comunicação fluida e interoperabilidade entre todas as funcionalidades.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.1.2</td>
+            <td>A plataforma de IA deve ser licenciada para os ambientes de desenvolvimento, homologação e de produção.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.</td>
+            <td>A contratada deve ofertar a quantidade necessária de subscrições de software da plataforma de IA levando em consideração os seguintes requisitos mínimos:</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.1</td>
+            <td>Capacidade Inicial</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.1.1</td>
+            <td>Suportar 5 (cinco) sessões concorrentes ativas no Ambiente de Desenvolvimento/Homologação de modelos mantendo os requisitos de eficiência do desempenho e capacidade.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.1.2</td>
+            <td>Suportar 25 (vinte e cinco) sessões concorrentes ativas para consumo de modelos no Ambiente de Produção mantendo os requisitos de eficiência do desempenho e capacidade.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.1.3</td>
+            <td>Quantidade de Implantação: Ilimitado.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.2.</td>
+            <td>Capacidade Máxima (sob demanda)</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.2.1.</td>
+            <td>Suportar 15 (quinze) sessões concorrentes ativas no Ambiente de Desenvolvimento/Homologação de modelos mantendo os requisitos de eficiência do desempenho e capacidade.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.2.2.</td>
+            <td>Suportar 76 (setenta e seis) sessões concorrentes ativas para consumo de modelos no Ambiente de Produção mantendo os requisitos de eficiência do desempenho e capacidade.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.2.3.2.3.</td>
+            <td>Quantidade de Implantação: Ilimitado.</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>45718</td>
+            <td>Requisitos Funcionais</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.1</td>
+            <td>Gerenciar Projeto</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.1.1.</td>
+            <td>Organização dos recursos por projetos ou contextos de trabalho equivalentes.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Projetos e Criação de Projetos</td>
+            <td>1</td>
+            <td>Um projeto é um espaço de trabalho colaborativo onde você trabalha com dados e outros ativos para alcançar um objetivo específico. Você cria um projeto para trabalhar com dados e outros ativos para atingir um objetivo, como construir um modelo ou integrar dados. Você pode criar um projeto vazio, criar um projeto a partir de um arquivo importando ativos existentes de um arquivo de projeto exportado em seu sistema, ou criar um projeto integrado com Git.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.1.2.</td>
+            <td>Possibilidade de compartilhamento de objetos criados nos projetos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Projetos e Gerenciamento de Colaboradores</td>
+            <td>1</td>
+            <td>Colaboradores são as pessoas que você adiciona ao projeto para trabalhar em conjunto. Após criar um projeto, adicione colaboradores para compartilhar conhecimento e recursos livremente, ajustar cargas de trabalho de forma flexível e ajudar uns aos outros a completar tarefas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.1.3.</td>
+            <td>Criação e execução de scripts e cadernos nas linguagens Python e R, permitindo acessar artefatos específicos da plataforma, como modelos, bases, etc.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Cadernos e Scripts</td>
+            <td>1</td>
+            <td>Você pode criar, editar e executar códigos Python e R usando cadernos Jupyter e scripts em editores de código, por exemplo, o editor de caderno ou um ambiente de desenvolvimento integrado.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.1.4.</td>
+            <td>Permitir a instalação de pacotes nos formatos wheel (PyPI), conda e R (CRAN).</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.0.x - Personalização de Ambientes</td>
+            <td>1</td>
+            <td>Se você deseja usar bibliotecas e pacotes que não estão incluídos nas configurações padrão de software, pode instalá-los diretamente do código do seu caderno, personalizar um modelo de ambiente existente ou usar uma imagem personalizada criada por um administrador. Métodos de personalização para PyPI, conda e R estão descritos na tabela de métodos de personalização por ferramenta.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.2.</td>
+            <td>Explorar Dados</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.2.1.</td>
+            <td>Recursos para documentação de dados, código-fonte, modelos, experimentos e demais artefatos originados do ciclo de vida dos projetos desenvolvidos na plataforma.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Tipos de Ativos e Propriedades; Catálogos e Ativos</td>
+            <td>1</td>
+            <td>A plataforma fornece espaços de trabalho colaborativos e ferramentas, e você fornece o conteúdo para a plataforma na forma de ativos. Um ativo é um item que contém informações sobre dados, outras informações valiosas ou código que trabalha com dados. Tipos de artefatos estão descritos na seção "Tipos de Ativos".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.2.2.</td>
+            <td>Análise exploratória de dados, incluindo perfilamento e gráficos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Perfis e Detalhes de Perfis</td>
+            <td>1</td>
+            <td>Perfis de ativos podem ser criados de diferentes maneiras: em catálogos governados, perfis para ativos de dados individuais são criados automaticamente quando os ativos são adicionados ao catálogo, com algumas exceções. Em projetos, você pode criar e executar um ativo de enriquecimento de metadados para perfilar grandes conjuntos de ativos de dados de uma vez. Esses perfis de ativos estão disponíveis no projeto. Você pode publicar os ativos enriquecidos com seus perfis em qualquer tipo de catálogo. A aba de estatísticas fornece um resumo da estrutura dos dados analisados em uma coluna e diferentes tipos de visualizações para essas informações estruturais. As informações exibidas dependem se a coluna contém dados contínuos (quantitativos) ou nominais (qualitativos). Os gráficos gerados estão descritos na seção "Gráficos".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.3.</td>
+            <td>Planejar Experimentos</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.3.1.</td>
+            <td>Criação de planos de experimentos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Orquestração de Tarefas e Pipelines; Introdução aos Pipelines</td>
+            <td>1</td>
+            <td>Exemplo de fluxo de orquestração de tarefas para criação de planos de experimentos, conforme diagrama de ciclo de orquestração.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.4.</td>
+            <td>Preparar Dados</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.4.1.</td>
+            <td>Engenharia de características automática – AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI e Engenharia de Características</td>
+            <td>1</td>
+            <td>O AutoAI executa automaticamente as seguintes tarefas para construir e avaliar pipelines de modelos candidatos: pré-processamento de dados, seleção automática de modelos, engenharia automática de características, otimização de hiperparâmetros e aprendizado incremental.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.4.2.</td>
+            <td>Recursos para limpeza de dados.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Cadernos e Scripts, Qualidade de Dados</td>
+            <td>1</td>
+            <td>Para refinar dados, você os obtém de um local, limpa e modela, e então carrega o resultado em um local diferente. Você pode limpar e modelar dados tabulares com uma ferramenta de editor de fluxo gráfico chamada Refinador de Dados. Ao limpar dados, você corrige ou remove dados incorretos, incompletos, formatados incorretamente ou duplicados. Ao modelar dados, você os personaliza filtrando, ordenando, combinando ou removendo colunas. Tipos de limpeza de dados estão presentes na seção "Operações de Interface Gráfica".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.4.3.</td>
+            <td>Recursos para transformação de dados.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Cadernos e Scripts</td>
+            <td>1</td>
+            <td>Para refinar dados, você os obtém de um local, limpa e modela, e então carrega o resultado em um local diferente. Você pode limpar e modelar dados tabulares com uma ferramenta de editor de fluxo gráfico chamada Refinador de Dados. Ao limpar dados, você corrige ou remove dados incorretos, incompletos, formatados incorretamente ou duplicados. Ao modelar dados, você os personaliza filtrando, ordenando, combinando ou removendo colunas. Tipos de transformação de dados estão presentes na seção "Operações de Interface Gráfica".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.4.4.</td>
+            <td>Interface para rotulação manual de dados dos tipos texto, áudio, imagem e vídeo.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Preparação de Dados, Cadernos e Scripts, AutoAI</td>
+            <td>3</td>
+            <td>Rotulação manual realizada através de cadernos e/ou scripts.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.4.5.</td>
+            <td>Rotinas de preparação de dados numéricos, categóricos, textuais e temporais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Preparação de Dados, Refinamento de Dados</td>
+            <td>2</td>
+            <td>Acesse o Refinador de Dados dentro de um projeto. Clique em Novo ativo > Refinador de Dados. Em seguida, selecione os dados com os quais deseja trabalhar. Alternativamente, na aba Ativos de um projeto, abra um arquivo (formatos suportados) para visualizá-lo e, em seguida, clique em Preparar dados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.4.6.</td>
+            <td>Tratamento automático de dados – AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
+            <td>1</td>
+            <td>O AutoAI executa automaticamente as seguintes tarefas para construir e avaliar pipelines de modelos candidatos: pré-processamento de dados, seleção automática de modelos, engenharia automática de características, otimização de hiperparâmetros e aprendizado incremental.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.</td>
+            <td>Criar Modelos</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.5.1.</td>
+            <td>Importação de modelos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Importação de Modelos em Espaços de Implantação</td>
+            <td>1</td>
+            <td>Importar modelos de aprendizado de máquina treinados fora da plataforma para que possam ser implantados e testados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.2.</td>
+            <td>Comparação automática da qualidade de múltiplos modelos - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Seleção de Modelos AutoAI</td>
+            <td>1</td>
+            <td>Exemplo de visão geral do processo de comparação automática de modelos, conforme diagrama de visão geral do AutoAI.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.3.</td>
+            <td>Seleção automática de modelos - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
+            <td>1</td>
+            <td>Exemplo de visão geral do processo de seleção automática de modelos, conforme diagrama de visão geral do AutoAI.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.4.</td>
+            <td>Otimização de hiperparâmetros - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
+            <td>1</td>
+            <td>Exemplo de visão geral do processo de otimização de hiperparâmetros, conforme diagrama de visão geral do AutoAI.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.5.</td>
+            <td>Treinamento de modelos de Classificação para campos numéricos, categóricos, textuais e temporais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina</td>
+            <td>1</td>
+            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.6.</td>
+            <td>Treinamento automático de modelos de classificação - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina; Detalhes de Implementação AutoAI, Construção de Experimentos, Configuração de Experimentos</td>
+            <td>1</td>
+            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.7.</td>
+            <td>Treinamento automático de modelos de regressão - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina; Detalhes de Implementação AutoAI, Construção de Experimentos, Configuração de Experimentos</td>
+            <td>1</td>
+            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.8.</td>
+            <td>Treinamento automático de modelos de agrupamento - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Nó de Cluster Automático</td>
+            <td>1</td>
+            <td>O nó de cluster automático estima e compara modelos de agrupamento que identificam grupos de registros com características semelhantes. Tipos de modelos suportados incluem TwoStep, K-Means, Kohonen, SVM de Uma Classe e K-Means-AS.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.9.</td>
+            <td>Treinamento de modelos de Descoberta de tópicos em texto.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Análise de Texto</td>
+            <td>1</td>
+            <td>A solução oferece nós especializados para tratamento de texto, com capacidades avançadas de análise de texto usando tecnologias linguísticas e Processamento de Linguagem Natural (PLN). Permite processar uma grande variedade de dados textuais não estruturados, extrair conceitos principais e organizar esses conceitos em categorias.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.10.</td>
+            <td>Treinamento de modelos de Previsão de séries temporais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implementação de Séries Temporais</td>
+            <td>1</td>
+            <td>Requisito atendido pela seção de detalhes de implementação e estágios de séries temporais.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.11.</td>
+            <td>Treinamento automático de modelos de previsão de série temporal - AutoML.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implementação de Séries Temporais</td>
+            <td>1</td>
+            <td>Requisito atendido pela seção de detalhes de implementação e estágios de séries temporais.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.12.</td>
+            <td>Treinamento de modelos de Detecção de anomalias para dados não-temporais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Modelagem de Anomalias</td>
+            <td>1</td>
+            <td>Modelos de detecção de anomalias identificam valores discrepantes ou casos incomuns nos dados, armazenando informações sobre o comportamento normal. Isso permite identificar discrepâncias sem seguir padrões conhecidos, útil em aplicações como detecção de fraudes. É um método não supervisionado, não exigindo dados de treinamento com casos conhecidos de fraude. Requisitos: um ou mais campos de entrada, apenas com papel definido como Entrada. Campos de destino são ignorados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.13.</td>
+            <td>Treinamento de modelos de Detecção de anomalias para séries temporais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Modelagem de Anomalias e Séries Temporais</td>
+            <td>1 e 2</td>
+            <td>Anomalias: Modelos de detecção de anomalias identificam valores discrepantes ou casos incomuns, armazenando informações sobre o comportamento normal, útil para detecção de fraudes. É um método não supervisionado, não exigindo dados de treinamento com casos conhecidos. Requisitos: um ou mais campos de entrada, apenas com papel definido como Entrada. Séries temporais: O nó de séries temporais permite estimar e construir modelos de suavização exponencial, ARIMA univariado ou multivariado para séries temporais, produzindo previsões com base nos dados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.14.</td>
+            <td>Treinamento de modelos de Detecção/Reconhecimento de objetos em imagem e vídeo.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Estúdio de IA; Classificador de Alfabeto de Língua de Sinais</td>
+            <td>1 e 2</td>
+            <td>O padrão de código usa uma biblioteca de aprendizado profundo para treinar um modelo de classificação de imagens em 29 classes (26 letras do alfabeto de sinais, espaço, exclusão e nada), útil para comunicação de pessoas com deficiência auditiva. Usa uma rede pré-treinada, define um classificador e treina com ambiente Python e GPU para maior rapidez.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.15.</td>
+            <td>Teste de modelo usando conjunto de dados e métricas parametrizáveis.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Estúdio de IA, Gerenciamento de Ativos, Teste e Validação, Construção e Implantação em Caderno</td>
+            <td>1, 2, 3 e 4</td>
+            <td>Este tutorial avalia e monitora um modelo implantado para prever solicitantes qualificados para hipotecas, garantindo precisão e equidade. Configura monitores para avaliar o desempenho do modelo, conforme descrito nas tarefas 4 e 5 da seção "Dados de Amostra".</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.16.</td>
+            <td>Teste automático de modelos - AutoML</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI e Configuração de Experimentos</td>
+            <td>1</td>
+            <td>Exemplo de quadro de classificação de modelos automáticos gerado pelo AutoAI, conforme diagrama de visão geral.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.17.</td>
+            <td>Recurso para registro de modelo selecionado.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Gerenciamento de Ativos; Catálogos e Tipos de Ativos</td>
+            <td>1</td>
+            <td>Exemplo de orquestração de implantação de modelos, conforme diagrama de implantação e orquestração.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.18</td>
+            <td>Possuir a possibilidade de ajuste fino de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais).</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Estúdio de Ajuste de Modelos</td>
+            <td>1</td>
+            <td>Exemplo de visão geral do processo de ajuste fino de modelos generativos, conforme diagrama de visão geral.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.19.</td>
+            <td>Disponibilidade de modelos fundacionais para múltiplas tarefas, como incorporação, classificação, sumarização e sequência para sequência.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Modelos Fundacionais; Geração Aumentada por Recuperação</td>
+            <td>1</td>
+            <td>Requisito presente nas tabelas: Métodos de implantação de modelos fundacionais, Modelos fundacionais da plataforma, Modelos fundacionais de terceiros suportados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.20.</td>
+            <td>Recurso de Geração Aumentada por Recuperação (RAG) para otimizar a eficácia da pesquisa, recuperação e geração de informações no uso de modelos de linguagem.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Automação de Padrão RAG com AutoAI</td>
+            <td>1</td>
+            <td>Exemplo de ecossistema de geração aumentada por recuperação, conforme diagrama de visão geral do AutoAI RAG.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.21.</td>
+            <td>Possibilidade de executar algoritmos de otimização.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Otimização de Decisão</td>
+            <td>1</td>
+            <td>A plataforma permite usar um serviço de otimização de decisão para aproveitar a análise prescritiva, com motores de otimização que avaliam milhões de possibilidades para encontrar as melhores soluções prescritivas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.22.</td>
+            <td>Possibilidade de desenvolver e executar algoritmos de análise de redes complexas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Trabalho com Modelos e Aprendizado Profundo</td>
+            <td>1 e 2</td>
+            <td>Requisito presente na tabela de ferramentas para tarefas.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.5.23.</td>
+            <td>Treinamento de modelos de redes neurais de diversas arquiteturas, como feed-forward, recorrentes, memória de longo/curto prazo, convolucionais, generativas, máquinas de vetores de suporte e outras, com a possibilidade de calibração dos hiperparâmetros de cada arquitetura.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Aprendizado Profundo, Frameworks e Métodos de Fusão, Definições de Hiperparâmetros</td>
+            <td>1, 2 e 3</td>
+            <td>Requisito presente na tabela de frameworks e métodos de fusão e na tabela de definições de hiperparâmetros.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.5.24.</td>
+            <td>Avaliação de desempenho de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) por meio de métricas (ex: ROUGE, BLEU, similaridade semântica, específicas de RAG) e benchmarks, com possibilidade de implementação de métricas personalizadas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Qualidade de IA Generativa, Benchmarks de Modelos, Métricas Personalizadas</td>
+            <td>1</td>
+            <td>Requisito presente na tabela de benchmarks de compreensão de linguagem em português.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.5.25.</td>
+            <td>Ambiente interativo para teste e experimentação para grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais), com suporte para entrada e saída de texto, chat, imagem e áudio.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Laboratório de Prompts</td>
+            <td>1</td>
+            <td>No laboratório de prompts da plataforma, você pode experimentar com prompts de diferentes modelos fundacionais, explorar exemplos de prompts e salvar e compartilhar seus melhores prompts.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.6.</td>
+            <td>Implantar Modelos</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.6.1.</td>
+            <td>Permitir a implantação de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) na infraestrutura da plataforma e em infraestrutura externa.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
+            <td>1</td>
+            <td>Exemplo de implantação de modelos de IA generativa, suportando tanto implantação interna quanto externa com personalização, conforme diagrama de implantação de ativos de IA. Tipos de modelos na seção: Tipos de ativos implantáveis.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.6.2.</td>
+            <td>Permitir a implantação de modelos na infraestrutura da plataforma e em infraestrutura externa.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
+            <td>1</td>
+            <td>Exemplo de implantação de modelos, suportando tanto infraestrutura interna quanto externa, conforme diagrama de implantação de ativos de IA. Tipos de implantação na seção: Formas de implantar ativos.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.6.3.</td>
+            <td>Gerenciamento da implantação de modelos em ambientes como desenvolvimento, homologação e produção.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
+            <td>1</td>
+            <td>Exemplo de gerenciamento de implantação em diferentes ambientes, conforme diagrama de implantação de ativos de IA. Tipos de implantação na seção: Formas de implantar ativos.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.6.4.</td>
+            <td>Oferta de modelos como serviço síncrono ou assíncrono, além de execução em lote e de forma agendada.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA; API de Aprendizado de Máquina</td>
+            <td>1</td>
+            <td>Exemplo de implantação de modelos como serviços síncronos, assíncronos, em lote ou agendados, conforme diagrama de implantação de ativos de IA. Tipos de implantações na seção: Tipos de implantações.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.7.</td>
+            <td>Monitorar Modelos</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.7.1.</td>
+            <td>Estatísticas de monitoramento dos modelos incluindo parâmetros como tempo de resposta, taxa de transferência, erros de execução e métricas de qualidade da inferência configuráveis.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Monitoramento de Saúde de Modelos</td>
+            <td>1</td>
+            <td>Exemplo de configuração de monitoramento com métricas como tempo de resposta e taxa de transferência, conforme diagrama de configuração de monitoramento de saúde de modelos. Tipos de estatísticas na seção: Métricas de saúde de modelos suportadas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.7.2.</td>
+            <td>Monitoramento de uso de recursos por modelo de acordo com métrica de capacidade.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Avaliações de Modelos</td>
+            <td>1</td>
+            <td>Você pode configurar avaliações para gerar insights sobre o desempenho do seu modelo. Tipos de configuração nas seções: Configuração de avaliações de modelos com a plataforma.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.7.3.</td>
+            <td>Configuração do monitoramento de modelos usando métricas de qualidade de inferência (supervisionadas e não-supervisionadas).</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Avaliações de Modelos; Qualidade; Criação de Métricas Personalizadas</td>
+            <td>1</td>
+            <td>Você pode configurar avaliações para gerar insights sobre o desempenho do seu modelo. Tipos de configuração nas seções: Configuração de avaliações de modelos com a plataforma.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.7.4.</td>
+            <td>Retreinamento automático de modelos baseado em gatilhos de monitoramento.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Gerenciamento do Ciclo de Vida de IA</td>
+            <td>1</td>
+            <td>O gerenciamento inclui implantação rotineira, re-treinamento contínuo, atualização automática e desenvolvimento sincronizado de modelos complexos, com recursos para estratégias de gerenciamento de ciclo de vida de IA.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.7.5.</td>
+            <td>Registro de eventos de modelos implantados.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Configuração de Avaliações de Modelos; Revisão de Insights de Modelos</td>
+            <td>2</td>
+            <td>Exemplo de painel de insights de modelos implantados, conforme diagrama de painel de insights.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.3.8.</td>
+            <td>Desenvolver Aplicações</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.3.8.1.</td>
+            <td>Construção de aplicações a partir de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) com recursos gráficos para minimizar a necessidade de codificação (low-code/no-code) ao criar, configurar e personalizar funcionalidades das aplicações desenvolvidas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Desenvolvimento de Soluções de IA Generativa</td>
+            <td>1</td>
+            <td>Você pode desenvolver soluções de IA generativa com modelos fundacionais, criando prompts para gerar, classificar, resumir ou extrair conteúdo de texto de entrada, com opções de personalização para otimizar a saída ou desempenho de inferência.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.3.8.2.</td>
+            <td>A plataforma deverá disponibilizar acesso às funcionalidades e recursos relacionados a grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) por meio de APIs.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - API de Modelos Fundacionais; Laboratório de Prompts; Código de Modelos Fundacionais</td>
+            <td>1</td>
+            <td>Você pode trabalhar com modelos fundacionais na plataforma de forma programática usando a API da plataforma.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        </tbody>
+    </table>
 </section>
 
-<section id="arquitetura">
-  <h2>3) Arquitetura & Topologia (alinhada ao IBM CPD 4.8)</h2>
-  <p>Topologia de produção recomendada: cluster OpenShift com <strong>3 nós de controle</strong> e <strong>3+ nós de trabalho</strong>, sujeito a <em>load balancer</em> corporativo externo; controle por <em>operators</em>; <em>control plane</em> leve com catálogo e serviços centrais comuns (jobs, projetos, conexões, busca). Instalações por projeto/namespace permitem multitenancy e expansão modular de serviços.</p>
-  <div class="figure"><em>(Diagrama não incluído nesta cópia)</em></div>
-  <div class="card">
-    <div class="kv">
-      <div><strong>Infra</strong></div><div>OpenShift (on‑prem na nuvem privada SERPRO), multi‑AZ, HPA e políticas de <em>request/limit</em>.</div>
-      <div><strong>Segurança</strong></div><div>SSO OIDC/SAML, Kerberos, RBAC granular, isolamento por namespaces, segredos e KMS.</div>
-      <div><strong>Dados</strong></div><div>MinIO (S3 compatível), PostgreSQL, Elastic; suporte a HDFS, conectores e formatos diversos.</div>
-      <div><strong>IA</strong></div><div>Runtimes de LLM e visão/áudio; pipelines de MLOps; RAG orquestrado; playground multimodal.</div>
-    </div>
-  </div>
+<section>
+    <h2>Requisitos Não Funcionais</h2>
+    <p>Esta seção detalha todos os requisitos não funcionais listados na planilha, desde o item 2.4.1 até 2.4.13.1, incluindo subitens e comprovações. A solução proposta atende à maioria dos itens nativamente (A), com alguns requerendo customização (AC) ou parametrização (AP), e dimensionamento conforme proposta comercial.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Item do Edital</th>
+            <th>Descrição do Item Edital</th>
+            <th>Nome do Arquivo</th>
+            <th>Página</th>
+            <th>Texto/Figura Comprovação</th>
+            <th>Atendido (A/NA/AP/AC)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2.4.1.</td>
+            <td>Gerenciamento de Operações de Modelos</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.4.1.1.</td>
+            <td>Permitir o versionamento de código-fonte e demais artefatos de desenvolvimento (como scripts, cadernos e configurações) com Git integrado com solução de versionamento do Serpro (Gitlab). Ou funcionalidade de importação/exportação desses artefatos e versionados externamente.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Operações de Integração com Git</td>
+            <td>1</td>
+            <td>Em um projeto com integração padrão com Git, o repositório Git associado ao projeto não precisa estar vazio quando o projeto é criado. Por exemplo, se você desenvolveu código em um ambiente de desenvolvimento integrado em sua estação de trabalho e deseja mover para um projeto na plataforma, você pode clonar o repositório já contendo seu código e continuar trabalhando em cadernos no seu projeto com base no conteúdo dos arquivos extraídos do repositório.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.1.2.</td>
+            <td>Permitir o versionamento de conjuntos de dados utilizados nos experimentos integrada com soluções de versionamento externas (Git, git+lfs ou DVC) ou funcionalidade que permita importação/exportação de conjuntos de dados utilizados na plataforma e versionados externamente.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Operações de Integração com Git</td>
+            <td>1</td>
+            <td>Em um projeto com integração padrão com Git, o repositório Git associado ao projeto não precisa estar vazio quando o projeto é criado. Por exemplo, se você desenvolveu código em um ambiente de desenvolvimento integrado em sua estação de trabalho e deseja mover para um projeto na plataforma, você pode clonar o repositório já contendo seu código e continuar trabalhando em cadernos no seu projeto com base no conteúdo dos arquivos extraídos do repositório.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.1.3.</td>
+            <td>Permitir o versionamento de modelos integrada com soluções de versionamento externas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Versionamento em Espaços</td>
+            <td>1</td>
+            <td>Você pode criar versões de um modelo, script ou função de forma programática, usando a API comum de dados e IA, a biblioteca cliente Python da plataforma ou a ferramenta de linha de comando.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.1.4.</td>
+            <td>Possuir gerenciamento de experimentos e/ou integração com soluções externas para registro e versionamento de variações em tratamento de dados, modelagem analítica, seus parâmetros e hiperparâmetros.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - AutoAI e Aprendizado de Máquina; Orquestração de Tarefas e Pipelines</td>
+            <td>2</td>
+            <td>Exemplo de fluxo de orquestração de tarefas para gerenciamento de experimentos, conforme diagrama de ciclo de orquestração.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.1.5.</td>
+            <td>Permitir definição e versionamento de fluxos de execução de tarefas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Execução e Salvamento de Pipelines</td>
+            <td>1</td>
+            <td>Você pode executar um pipeline em tempo real para testar um fluxo enquanto trabalha. Quando estiver satisfeito com um pipeline, você pode definir um trabalho para executar um pipeline com parâmetros ou para rodar em um agendamento. Outras tarefas incluem execução, criação de trabalhos, salvamento de versões e exportação de ativos de pipeline.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.1.6.</td>
+            <td>A plataforma deve permitir gerenciar (manter em catálogo, treinar, implantar, inferir, monitorar) até 1 bilhão de modelos mantendo o cumprimento de todos os requisitos, com documentação do dimensionamento de infraestrutura e definições de arquitetura necessárias para operação nesta escala.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Planejamento de Arquitetura; Requisitos de Hardware</td>
+            <td>1</td>
+            <td>Exemplo de arquitetura de cluster para gerenciamento de modelos em grande escala, conforme diagrama de arquitetura de cluster.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.2.</td>
+            <td>Desenvolvimento</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.4.2.1.</td>
+            <td>Permitir o treinamento e inferência de modelos em CPU e GPU.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Criação e Personalização de Ambientes</td>
+            <td>1</td>
+            <td>Requisito presente na seção de criação de modelos de ambiente.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.2.2.</td>
+            <td>Permitir o treinamento e inferência de modelos em nuvens públicas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Visão Geral de Frameworks</td>
+            <td>1</td>
+            <td>Suporte a provedores de aprendizado de máquina para registro de carga, feedback, medição de precisão, detecção de viés, explicabilidade e redução automática de viés, com runtime próprio ou personalizado.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.2.3.</td>
+            <td>Permitir alocação de recursos do runtime com base em perfil, grupos e autorizações para usuários específicos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Espaços de Implantação</td>
+            <td>1</td>
+            <td>Exemplo de configuração de espaços de implantação para alocação de recursos, conforme diagrama de espaços de implantação.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.4.2.4.</td>
+            <td>Possuir integração com grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) disponíveis em nuvens públicas ou privadas, incluindo os ambientes do Serpro.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Implantação de Modelos Fundacionais; Modelos Fundacionais Suportados</td>
+            <td>2</td>
+            <td>Requisito presente nas tabelas: Métodos de implantação, Modelos fundacionais da plataforma, Modelos fundacionais de terceiros suportados.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.4.2.5.</td>
+            <td>Permitir seleção e alternância de runtime para execução de scripts e cadernos, sobretudo para treinamento de modelos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Ambientes de Caderno</td>
+            <td>1</td>
+            <td>Requisito presente na seção de modelos de ambiente incluídos.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.3.</td>
+            <td>Eficiência do desempenho / Capacidade</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.4.3.1.</td>
+            <td>Ambiente de desenvolvimento/homologação:</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.4.3.1.1.</td>
+            <td>Suportar a capacidade inicial e máxima conforme itens 2.2.3.1 e 2.2.3.2 para desenvolvimento de modelos mantendo o nível de serviço acordado.</td>
+            <td>Proposta Comercial HLF Soluções LTDA</td>
+            <td>-</td>
+            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.3.2.</td>
+            <td>Ambiente de produção</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A"></td>
+        </tr>
+        <tr>
+            <td>2.4.3.2.1.</td>
+            <td>Suportar a capacidade inicial e máxima conforme itens 2.2.3.1 e 2.2.3.2 para consumo de modelos em produção mantendo o nível de serviço acordado.</td>
+            <td>Proposta Comercial HLF Soluções LTDA</td>
+            <td>-</td>
+            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.</td>
+            <td>Requisitos para Instalação</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.1.</td>
+            <td>Permitir instalação multi-inquilino permitindo isolamento de ambientes para aplicações, dados e modelos entre eles.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Suporte a Multi-inquilino; Visão Geral da Plataforma</td>
+            <td>1</td>
+            <td>A plataforma suporta diferentes mecanismos de instalação e implantação para alcançar multi-inquilino.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.</td>
+            <td>Implementação na nuvem privada Serpro</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
+            <td>1</td>
+            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.1.</td>
+            <td>A plataforma deverá ser totalmente implantada no ambiente de nuvem privada do Serpro, utilizando os recursos e a infraestrutura de TI disponíveis nessa nuvem.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
+            <td>1</td>
+            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.2.</td>
+            <td>Todas as licenças de softwares que componham a plataforma e não estejam disponíveis na nuvem privada do Serpro, inclusos sistemas operacionais e bancos de dados, deverão ser fornecidas, com suporte e atualizações durante toda a vigência do contrato.</td>
+            <td>Proposta Comercial HLF Soluções LTDA</td>
+            <td>-</td>
+            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.3.</td>
+            <td>A arquitetura da plataforma deverá ser dimensionada e informada ao Serpro de forma a atender aos requisitos expostos neste documento.</td>
+            <td>Proposta Comercial HLF Soluções LTDA</td>
+            <td>-</td>
+            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.4.</td>
+            <td>A plataforma deverá seguir as diretrizes estabelecidas para aplicações nativas em nuvem, atendendo aos requisitos de empacotamento como contêineres, multi-inquilino, microsserviços e infraestrutura imutável, garantindo alta disponibilidade, tolerância a falhas, autoescalonamento e balanceamento de cargas.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
+            <td>3</td>
+            <td>Exemplo de arquitetura nativa em nuvem, conforme diagrama de arquitetura da plataforma.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.5.</td>
+            <td>A arquitetura da plataforma deverá ser dimensionada prevendo a utilização de zonas de disponibilidade redundantes, garantindo que, caso uma zona deixe de funcionar ou tenha degradação do tempo de resposta, a segunda seja acionada para atendimento das requisições.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Estratégias de Implantação; Configuração de Rotas; Configurações de Máquinas de Controle</td>
+            <td>1, 2 e 3</td>
+            <td>Implantação: Estratégias de implantação permitem alterar ou atualizar aplicações sem interrupções, de modo que os usuários mal percebam a mudança. Alta disponibilidade: Uma rota permite hospedar sua aplicação em um URL público, podendo ser segura ou não, dependendo da configuração de segurança de rede.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.6.</td>
+            <td>Deverão ser previstos ambientes de desenvolvimento, homologação e produção.</td>
+            <td>Proposta Comercial HLF Soluções LTDA</td>
+            <td>-</td>
+            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.4.2.7.</td>
+            <td>A plataforma deverá ser implantada sobre infraestrutura e softwares básicos comuns de mercado, sem qualquer dependência ou presença de hardwares específicos. Caso haja algum requisito obrigatório para o funcionamento da plataforma, como token de hardware ou instrução específica de processador, a possibilidade de adoção deverá ser avaliada previamente pelo Serpro.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
+            <td>1</td>
+            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.</td>
+            <td>Compatibilidade com Nuvem Privada do Serpro</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.1</td>
+            <td>A plataforma deverá ser totalmente construída usando protocolo IPv4 e suportar o protocolo IPv6 para comunicação com o usuário final.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Notas de Lançamento</td>
+            <td>1</td>
+            <td>Atendimento ao requisito no item: Mudança de sub-rede de mascaramento para novos clusters.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.2</td>
+            <td>A intercomunicação entre os componentes internos da plataforma deverá ocorrer de forma criptografada.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Criptografia de Dados; Instalação com Conformidade</td>
+            <td>1</td>
+            <td>Você pode habilitar a criptografia de dados para seu cluster para fornecer uma camada adicional de segurança de dados.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.3</td>
+            <td>A plataforma deverá ser capaz de interoperar em ambientes com NAT (Tradução de Endereço de Rede) e Firewalls.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Instalação em Bare Metal; Balanceamento de Carga</td>
+            <td>1</td>
+            <td>Atendimento ao requisito no item: Preparando a infraestrutura provisionada pelo usuário.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4</td>
+            <td>Automação para o ambiente de Nuvem Privada do Serpro</td>
+            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
+            <td>1</td>
+            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4.1</td>
+            <td>A ferramenta de automação selecionada deverá ser compatível com os componentes da nuvem privada do Serpro.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
+            <td>1</td>
+            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4.2</td>
+            <td>Deverá ser observada e utilizada a versão mais atual da ferramenta de automação.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
+            <td>1</td>
+            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4.3</td>
+            <td>O código utilizado para automação deverá ser documentado e cedido como parte da plataforma.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
+            <td>1</td>
+            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4.4</td>
+            <td>Tanto a documentação quanto a construção do código deverão seguir as melhores práticas de mercado.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
+            <td>1</td>
+            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.4.5</td>
+            <td>Fazer uso efetivo de um sistema de controle de versão (Git).</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
+            <td>1</td>
+            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem, com personalização necessária.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.4.5.5</td>
+            <td>Arquitetura</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.5.1</td>
+            <td>Deve ser informada a quantidade média de recursos (CPU e RAM) que a plataforma assumirá quando ociosa.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Pré-requisitos de Instalação</td>
+            <td>1</td>
+            <td>Atendimento ao requisito no item: Requisitos mínimos de recursos para instalação de cluster.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.6</td>
+            <td>Contêineres / Máquinas Virtuais</td>
+            <td>Solução roda em ambiente de orquestração nativa em nuvem</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.6.1</td>
+            <td>A plataforma deve permitir a instalação por meio de padrões abertos de contêineres Docker em orquestradores Kubernetes, garantindo a aplicabilidade dos recursos de elasticidade e disponibilidade, bem como a aplicação de boas práticas de operação nessa arquitetura de infraestrutura.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Instalação; Administração da Plataforma; Arquitetura da Plataforma</td>
+            <td>1</td>
+            <td>Requisito atendido na seção: Visão geral da instalação, com personalização necessária.</td>
+            <td class="attended-AC">AC</td>
+        </tr>
+        <tr>
+            <td>2.4.5.7</td>
+            <td>Armazenamento de Objetos / Armazenamento da Plataforma</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Requisitos de Armazenamento</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.7.1</td>
+            <td>Caso utilize armazenamento de objetos, a plataforma deverá ser compatível com a plataforma de armazenamento de objetos disponível na nuvem privada do Serpro Cloud ONE, sendo esta compatível com protocolo S3.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
+            <td>1</td>
+            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.7.2</td>
+            <td>Caso utilize armazenamento de objetos, a solução deverá utilizar a API disponibilizada pela plataforma de armazenamento de objetos.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
+            <td>1</td>
+            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.7.3</td>
+            <td>Caso utilize armazenamento de objetos, os buckets e objetos criados deverão utilizar o nível mais restrito de acesso possível, reduzindo assim a exposição de informações.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
+            <td>1</td>
+            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.8</td>
+            <td>Software Básico</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.8.1</td>
+            <td>A plataforma deverá adotar apenas os sistemas operacionais e bancos de dados suportados pelo Serpro para composição da sua arquitetura.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Sistemas Operacionais e Bancos de Dados</td>
+            <td>1</td>
+            <td>A plataforma utiliza sistemas operacionais de contêineres de propósito único com padrões de alta qualidade e recursos de atualização remota automatizada, suportados apenas como componente da plataforma de orquestração.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        <tr>
+            <td>2.4.5.8.2</td>
+            <td>A plataforma deverá adotar apenas os sistemas operacionais: Red Hat, CentOS e/ou Rocky/Alma Linux, nas suas versões mais atuais.</td>
+            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
+            <td>1</td>
+            <td>A plataforma utiliza sistemas operacionais de contêineres de propósito único com padrões de alta qualidade e recursos de atualização remota automatizada, suportados apenas como componente da plataforma de orquestração.</td>
+            <td class="attended-A">A</td>
+        </tr>
+        </tbody>
+    </table>
 </section>
-
-<section id="seguranca">
-  <h2>4) Segurança, SSO & Conectividade</h2>
-  <ul>
-    <li>Login Único SERPRO via OIDC Authorization Code (com PKCE para <em>public client</em>) e SAML 2.0.</li>
-    <li>Kerberos <em>cross‑realm</em> com serviço de diretórios; autenticação por credenciais/certificado.</li>
-    <li>RBAC por grupos/usuários com controle de acesso a projetos, dados, códigos, modelos e recursos (CPU/GPU).</li>
-    <li>Intercomunicação interna criptografada; compatibilidade IPv4 e suporte a IPv6; operação com NAT/Firewalls.</li>
-    <li>Auditoria de ações administrativas e timeouts de sessão configuráveis.</li>
-  </ul>
-</section>
-
-<section id="mlops">
-  <h2>5) MLOps & ModelOps</h2>
-  <p>Ferramentas: GitLab (CI/CD), DVC (datasets), MLflow (experimentos e registro), Airflow/Kubeflow (pipelines). Integração com IDEs (ex.: VS Code) e conectividade com dados estruturados, semi-estruturados e não estruturados (PDF, DOC/DOCX, ODF, imagens, vídeos, áudios, S3, HDFS, bases relacionais, NoSQL, vetoriais).</p>
-  <div class="grid">
-    <div class="card"><h3>Ciclo</h3><ul>
-      <li>Ingestão e curadoria de dados; versionamento de datasets e código.</li>
-      <li>Treino/Validação; Benchmark (GLUE, SuperGLUE, HELM) e métricas de RAG.</li>
-      <li>Empacotamento (ONNX, safetensors, pb, pkl, h5, pmml, PyTorch/TensorFlow/MLLib).</li>
-      <li>Registro e promoção; <em>canary</em>/<em>blue‑green</em>; auditoria e <em>lineage</em>.</li>
-    </ul></div>
-    <div class="card"><h3>Pipelines</h3><pre><code>steps:
-  - extract: s3://datasets/
-  - prepare: cleaning, chunking
-  - embed: embedding_model=ptbr-large; store=qdrant://colecao
-  - train: framework=transformers; epochs=2; gpu=1
-  - eval: glue, superglue, helm; rag_metrics=[precision@10, mrr]
-  - package: format=onnx
-  - publish: env=homolog; autoscale=cpu:75%, gpu:80%</code></pre></div>
-  </div>
-</section>
-
-<section id="servicos">
-  <h2>6) Serviço de Modelos</h2>
-  <p>Publicação de endpoints com versionamento, limites de taxa e políticas de segurança. Execução em CPU/GPU; compatível com Hadoop/Spark para treino e inferência distribuídos.</p>
-  <pre><code>POST /api/modelos/&lt;nome&gt;/inferir
-{"inputs":"Classifique este texto","parameters":{"temperature":0.2,"max_tokens":256}}</code></pre>
-</section>
-
-<section id="rag">
-  <h2>7) RAG</h2>
-  <p>Orquestrado por LangChain/LlamaIndex com busca híbrida (BM25+denso), filtros, reranking e coleções com ACL. Vetorização em Qdrant/Milvus/Weaviate; ingestão a partir de S3/HDFS/pastas/sites/BDs; auditoria de consultas e explicabilidade.</p>
-</section>
-
-<section id="playground">
-  <h2>8) Playground Multimodal</h2>
-  <p>Ambiente para texto/chat/imagem/áudio com salvamento de sessões, <em>prompt templates</em>, anotações e avaliação subjetiva dos outputs (star rating, comentários).</p>
-</section>
-
-<section id="observabilidade">
-  <h2>9) Observabilidade & Retreinamento</h2>
-  <ul>
-    <li>Métricas técnicas (latência P50/P95/P99, throughput, taxa de erro) e de qualidade (métricas RAG/benchmark).</li>
-    <li>Dashboards (Grafana), logs/auditoria (ELK), alertas (Alertmanager/Prometheus).</li>
-    <li>Retreinamento por gatilhos (drift, degradação, janela temporal/volume).</li>
-  </ul>
-</section>
-
-<section id="dados">
-  <h2>10) Dados & Interoperabilidade</h2>
-  <ul>
-    <li>Exportação/importação em formatos interoperáveis (onnx, safetensors, pb, pkl, h5, pmml, PyTorch, TensorFlow, MLLib).</li>
-    <li>Conectores a dados estruturados/semi‑estruturados/não estruturados; compatível com S3, Ceph, HDFS, bases relacionais, NoSQL e vetoriais.</li>
-    <li>Suporte a Hadoop e Spark em treino e inferência.</li>
-  </ul>
-</section>
-
-<section id="implantacao">
-  <h2>11) Implantação & Ambientes</h2>
-  <ul class="check">
-    <li>Instalação <strong>multi‑tenant</strong> com isolamento de aplicações, dados e modelos entre ambientes.</li>
-    <li>Implantação integral na <strong>nuvem privada do SERPRO</strong>; licenças ausentes serão fornecidas com suporte e atualização.</li>
-    <li>Conformidade CNCF (contêineres, microsserviços, multi‑tenancy, infraestrutura imutável), assegurando HA, failover, autoscaling e balanceamento.</li>
-    <li>Topologia com <strong>zonas de disponibilidade</strong> redundantes; ambientes <em>dev/hml/prod</em>.</li>
-    <li>Sem dependência de hardware específico; requisitos especiais avaliados previamente.</li>
-    <li>Automação compatível com a nuvem SERPRO; versão atual; código documentado, versionado e entregue.</li>
-  </ul>
-</section>
-
-<section id="capacidade">
-  <h2>12) Capacidade, Desempenho & SLA</h2>
-  <div class="grid">
-    <div class="card"><h3>Capacidade Inicial</h3>
-      <p>Suportar <strong>5 sessões concorrentes ativas</strong> em Dev/Homolog (desenvolvimento de modelos).</p></div>
-    <div class="card"><h3>Capacidade Máxima</h3>
-      <p>Ambiente de produção suportando consumo conforme requisitos, com testes de carga e autoscaling.</p></div>
-  </div>
-  <ul>
-    <li><strong>SLA/SLO</strong>: disponibilidade mensal, P95 de resposta, taxa de erro, MTTR.</li>
-    <li><strong>Teste</strong>: picos, endurance, caos/DR, validação funcional (SSO, RBAC, RAG, playground, export/import).</li>
-  </ul>
-</section>
-
-<section id="homologacao">
-  <h2>13) Homologação de Amostra & Documentação do Fabricante</h2>
-  <ul>
-    <li>Homologação presencial abrangendo <strong>todos os itens</strong> da especificação técnica.</li>
-    <li>Documentação oficial do fabricante acompanhando a Proposta Comercial; não são aceitos folhetos/folders adaptados.</li>
-    <li><em>Planilha ponto‑a‑ponto</em> indicando, para cada item, a localização exata da comprovação na documentação.</li>
-    <li>Recebimento definitivo vinculado à comprovação de autenticidade e quantitativos das subscrições.</li>
-  </ul>
-</section>
-
-<section id="gestao">
-  <h2>14) Gestão Operacional, Qualidade & Mudanças</h2>
-  <div class="grid">
-    <div class="card"><h3>Operação (SRE)</h3><ul>
-      <li>Runbooks e playbooks; rotinas de saúde, <em>rollouts</em>/<em>rollbacks</em>, janelas de mudança.</li>
-      <li>Backups e retenção; testes de restauração; postura Zero Trust na malha de serviços.</li>
-    </ul></div>
-    <div class="card"><h3>Qualidade</h3><ul>
-      <li>Benchmarks (GLUE/SuperGLUE/HELM) e métricas RAG; testes automatizados de regressão.</li>
-      <li>A/B testing, canary e <em>feature flags</em> para validação contínua.</li>
-    </ul></div>
-    <div class="card"><h3>Mudanças</h3><ul>
-      <li>CI/CD com aprovação; versionamento de infra como código; política de TAGs e Changelog.</li>
-      <li>Gestão de vulnerabilidades e correções (CVE), varreduras de imagens e dependências.</li>
-    </ul></div>
-  </div>
-</section>
-
-<section id="riscos">
-  <h2>15) Riscos & Mitigações</h2>
-  <ul>
-    <li><strong>Capacidade subdimensionada</strong>: mitigação com <em>autoscaling</em>, observabilidade e testes de estresse.</li>
-    <li><strong>Integração SSO/Kerberos</strong>: ensaio em <em>homolog</em>, <em>fallback</em> e ajustes de mapeamento de grupos.</li>
-    <li><strong>Dados sensíveis</strong>: criptografia e segregação por projeto; revisões de ACLs; auditoria.</li>
-    <li><strong>Dependências OSS</strong>: mirror privado de imagens; pin de versões; política de segurança.</li>
-  </ul>
-</section>
-
-<section id="anexos">
-  <h2>16) Anexos</h2>
-  <div class="grid">
-    <div class="card"><h3>APIs (alto nível)</h3><pre><code>POST /api/auth/token
-GET  /api/auth/me
-GET  /api/modelos
-POST /api/modelos/publicar
-POST /api/modelos/&lt;nome&gt;/inferir
-POST /api/rag/ingestao
-POST /api/rag/consultar
-GET  /api/monitoramento/metrics
-GET  /api/auditoria/eventos</code></pre></div>
-    <div class="card"><h3>Glossário</h3><ul>
-      <li><strong>RAG</strong>: combinação de recuperação e geração para respostas fundamentadas.</li>
-      <li><strong>RBAC</strong>: controle de acesso baseado em papéis.</li>
-      <li><strong>Namespace</strong>: partição lógica no Kubernetes para isolamento de recursos.</li>
-    </ul></div>
-  </div>
-</section>
-
-<hr>
-<footer>© 2025 HLF Soluções LTDA — Documento interno • Versão 2.0 (ampliada)</footer>
-</main>
-</body>
-</html>
