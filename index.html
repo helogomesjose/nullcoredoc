@@ -1,1033 +1,122 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+html<html class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-intro" data-has-hydrated="false" dir="ltr" lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Completa e Descritiva de Requisitos para Plataforma de IA - Licitação SERPRO</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .company-info {
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .attended-A { color: green; }
-        .attended-NA { color: red; }
-        .attended-AP { color: orange; }
-        .attended-AC { color: blue; }
-    </style>
+<meta charset="utf-8"/>
+<meta content="Docusaurus v3.5.2" name="generator"/>
+<title data-rh="true">🏡 Home | Abra Webui</title><meta content="width=device-width,initial-scale=1" data-rh="true" name="viewport"/><meta content="summary_large_image" data-rh="true" name="twitter:card"/><meta content="https://openwebui.com/" data-rh="true" property="og:url"/><meta content="en" data-rh="true" property="og:locale"/><meta content="en" data-rh="true" name="docusaurus_locale"/><meta content="en" data-rh="true" name="docsearch:language"/><meta content="current" data-rh="true" name="docusaurus_version"/><meta content="docs-default-current" data-rh="true" name="docusaurus_tag"/><meta content="current" data-rh="true" name="docsearch:version"/><meta content="docs-default-current" data-rh="true" name="docsearch:docusaurus_tag"/><meta content="🏡 Home | Open WebUI" data-rh="true" property="og:title"/><meta content="Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution." data-rh="true" name="description"/><meta content="Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution." data-rh="true" property="og:description"/><link data-rh="true" href="images/favicon.png" rel="icon"/><link data-rh="true" href="https://openwebui.com/" rel="canonical"/><link data-rh="true" href="https://openwebui.com/" hreflang="en" rel="alternate"/><link data-rh="true" href="https://openwebui.com/" hreflang="x-default" rel="alternate"/><script data-rh="true">function insertBanner(){var n=document.createElement("div");n.id="__docusaurus-base-url-issue-banner-container";n.innerHTML='\n<div id="__docusaurus-base-url-issue-banner" style="border: thick solid red; background-color: rgb(255, 230, 179); margin: 20px; padding: 20px; font-size: 20px;">\n   <p style="font-weight: bold; font-size: 30px;">Your Docusaurus site did not load properly.</p>\n   <p>A very common reason is a wrong site <a href="https://docusaurus.io/docs/docusaurus.config.js/#baseUrl" style="font-weight: bold;">baseUrl configuration</a>.</p>\n   <p>Current configured baseUrl = <span style="font-weight: bold; color: red;">/</span>  (default value)</p>\n   <p>We suggest trying baseUrl = <span id="__docusaurus-base-url-issue-banner-suggestion-container" style="font-weight: bold; color: green;"></span></p>\n</div>\n',document.body.prepend(n);var e=document.getElementById("__docusaurus-base-url-issue-banner-suggestion-container"),s=window.location.pathname,o="/"===s.substr(-1)?s:s+"/";e.innerHTML=o}document.addEventListener("DOMContentLoaded",(function(){void 0===window.docusaurus&&insertBanner()}))</script><link href="blog/rss.xml" rel="alternate" title="Open WebUI RSS Feed" type="application/rss+xml"/>
+<link href="blog/atom.xml" rel="alternate" title="Open WebUI Atom Feed" type="application/atom+xml"/>
+<link href="https://www.google-analytics.com" rel="preconnect"/>
+<link href="https://www.googletagmanager.com" rel="preconnect"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-522JSJVWTB"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-522JSJVWTB",{})</script><link href="assets/css/styles.5b18f379.css" rel="stylesheet"/>
+<script defer="defer" src="assets/js/runtime~main.217be6ef.js"></script>
+<script defer="defer" src="assets/js/main.36f40a9e.js"></script>
 </head>
-<body>
-<header>
-    <h1>Análise Completa e Descritiva de Requisitos para Plataforma de IA</h1>
-    <p class="company-info">Documento preparado pela HLF Soluções LTDA para participação na licitação SERPRO - Pregão Eletrônico Nº 91272/2024. Esta análise abrange todos os requisitos funcionais e não funcionais detalhados na planilha fornecida, com comprovações baseadas em documentação técnica da solução proprietária da HLF Soluções LTDA, adaptada para atender às necessidades do SERPRO. Cada item é avaliado quanto ao atendimento, com descrições textuais em português brasileiro, sem links diretos para páginas externas.</p>
-    <p>Data: 28 de Agosto de 2025</p>
-    <p>Este documento apresenta uma análise exaustiva dos requisitos, garantindo que nada seja omitido. As tabelas incluem todos os itens da planilha original, com colunas para Item do Edital, Descrição, Nome do Arquivo (descrições sem links), Página, Texto/Figura de Comprovação e Status de Atendimento (A: Atendido, NA: Não Atendido, AP: Atendido com Parametrização, AC: Atendido com Customização).</p>
-</header>
-
-<section>
-    <h2>Informações Gerais da Licitação</h2>
-    <p>Pregão Eletrônico Nº 91272/2024 - UASG: 803080 SERPRO/São Paulo SUPGA/GATIC/GASPO</p>
-    <p>Objetivo: Contratação de plataforma para desenvolvimento de soluções de inteligência artificial (IA) compreendendo subscrições de software, serviço de implantação e serviços técnicos especializados, sob demanda. A HLF Soluções LTDA propõe uma solução proprietária que atende integralmente aos requisitos, com suporte a ambientes de desenvolvimento, homologação e produção, escalabilidade sob demanda e integração com ferramentas existentes no SERPRO.</p>
-</section>
-
-<section>
-    <h2>Requisitos Funcionais</h2>
-    <p>Esta seção detalha todos os requisitos funcionais listados na planilha, desde o item 2.1.1 até 2.3.8.2, incluindo subitens e comprovações. A solução proposta atende à maioria dos itens nativamente (A), com alguns requerendo customização (AC) ou parametrização (AP).</p>
-    <table>
-        <thead>
-        <tr>
-            <th>Item do Edital</th>
-            <th>Descrição do Item Edital</th>
-            <th>Nome do Arquivo</th>
-            <th>Página</th>
-            <th>Texto/Figura Comprovação</th>
-            <th>Atendido (A/NA/AP/AC)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>2.1.1.</td>
-            <td>A plataforma de IA deve ser suportada por um único fabricante totalmente integrada, permitindo comunicação fluida e interoperabilidade entre todas as funcionalidades.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.1.2</td>
-            <td>A plataforma de IA deve ser licenciada para os ambientes de desenvolvimento, homologação e de produção.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.</td>
-            <td>A contratada deve ofertar a quantidade necessária de subscrições de software da plataforma de IA levando em consideração os seguintes requisitos mínimos:</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.1</td>
-            <td>Capacidade Inicial</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.1.1</td>
-            <td>Suportar 5 (cinco) sessões concorrentes ativas no Ambiente de Desenvolvimento/Homologação de modelos mantendo os requisitos de eficiência do desempenho e capacidade.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.1.2</td>
-            <td>Suportar 25 (vinte e cinco) sessões concorrentes ativas para consumo de modelos no Ambiente de Produção mantendo os requisitos de eficiência do desempenho e capacidade.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.1.3</td>
-            <td>Quantidade de Implantação: Ilimitado.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.2.</td>
-            <td>Capacidade Máxima (sob demanda)</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.2.1.</td>
-            <td>Suportar 15 (quinze) sessões concorrentes ativas no Ambiente de Desenvolvimento/Homologação de modelos mantendo os requisitos de eficiência do desempenho e capacidade.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.2.2.</td>
-            <td>Suportar 76 (setenta e seis) sessões concorrentes ativas para consumo de modelos no Ambiente de Produção mantendo os requisitos de eficiência do desempenho e capacidade.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.2.3.2.3.</td>
-            <td>Quantidade de Implantação: Ilimitado.</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>45718</td>
-            <td>Requisitos Funcionais</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.1</td>
-            <td>Gerenciar Projeto</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.1.1.</td>
-            <td>Organização dos recursos por projetos ou contextos de trabalho equivalentes.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Projetos e Criação de Projetos</td>
-            <td>1</td>
-            <td>Um projeto é um espaço de trabalho colaborativo onde você trabalha com dados e outros ativos para alcançar um objetivo específico. Você cria um projeto para trabalhar com dados e outros ativos para atingir um objetivo, como construir um modelo ou integrar dados. Você pode criar um projeto vazio, criar um projeto a partir de um arquivo importando ativos existentes de um arquivo de projeto exportado em seu sistema, ou criar um projeto integrado com Git.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.1.2.</td>
-            <td>Possibilidade de compartilhamento de objetos criados nos projetos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Projetos e Gerenciamento de Colaboradores</td>
-            <td>1</td>
-            <td>Colaboradores são as pessoas que você adiciona ao projeto para trabalhar em conjunto. Após criar um projeto, adicione colaboradores para compartilhar conhecimento e recursos livremente, ajustar cargas de trabalho de forma flexível e ajudar uns aos outros a completar tarefas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.1.3.</td>
-            <td>Criação e execução de scripts e cadernos nas linguagens Python e R, permitindo acessar artefatos específicos da plataforma, como modelos, bases, etc.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Cadernos e Scripts</td>
-            <td>1</td>
-            <td>Você pode criar, editar e executar códigos Python e R usando cadernos Jupyter e scripts em editores de código, por exemplo, o editor de caderno ou um ambiente de desenvolvimento integrado.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.1.4.</td>
-            <td>Permitir a instalação de pacotes nos formatos wheel (PyPI), conda e R (CRAN).</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.0.x - Personalização de Ambientes</td>
-            <td>1</td>
-            <td>Se você deseja usar bibliotecas e pacotes que não estão incluídos nas configurações padrão de software, pode instalá-los diretamente do código do seu caderno, personalizar um modelo de ambiente existente ou usar uma imagem personalizada criada por um administrador. Métodos de personalização para PyPI, conda e R estão descritos na tabela de métodos de personalização por ferramenta.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.2.</td>
-            <td>Explorar Dados</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.2.1.</td>
-            <td>Recursos para documentação de dados, código-fonte, modelos, experimentos e demais artefatos originados do ciclo de vida dos projetos desenvolvidos na plataforma.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Tipos de Ativos e Propriedades; Catálogos e Ativos</td>
-            <td>1</td>
-            <td>A plataforma fornece espaços de trabalho colaborativos e ferramentas, e você fornece o conteúdo para a plataforma na forma de ativos. Um ativo é um item que contém informações sobre dados, outras informações valiosas ou código que trabalha com dados. Tipos de artefatos estão descritos na seção "Tipos de Ativos".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.2.2.</td>
-            <td>Análise exploratória de dados, incluindo perfilamento e gráficos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Perfis e Detalhes de Perfis</td>
-            <td>1</td>
-            <td>Perfis de ativos podem ser criados de diferentes maneiras: em catálogos governados, perfis para ativos de dados individuais são criados automaticamente quando os ativos são adicionados ao catálogo, com algumas exceções. Em projetos, você pode criar e executar um ativo de enriquecimento de metadados para perfilar grandes conjuntos de ativos de dados de uma vez. Esses perfis de ativos estão disponíveis no projeto. Você pode publicar os ativos enriquecidos com seus perfis em qualquer tipo de catálogo. A aba de estatísticas fornece um resumo da estrutura dos dados analisados em uma coluna e diferentes tipos de visualizações para essas informações estruturais. As informações exibidas dependem se a coluna contém dados contínuos (quantitativos) ou nominais (qualitativos). Os gráficos gerados estão descritos na seção "Gráficos".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.3.</td>
-            <td>Planejar Experimentos</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.3.1.</td>
-            <td>Criação de planos de experimentos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Orquestração de Tarefas e Pipelines; Introdução aos Pipelines</td>
-            <td>1</td>
-            <td>Exemplo de fluxo de orquestração de tarefas para criação de planos de experimentos, conforme diagrama de ciclo de orquestração.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.4.</td>
-            <td>Preparar Dados</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.4.1.</td>
-            <td>Engenharia de características automática – AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI e Engenharia de Características</td>
-            <td>1</td>
-            <td>O AutoAI executa automaticamente as seguintes tarefas para construir e avaliar pipelines de modelos candidatos: pré-processamento de dados, seleção automática de modelos, engenharia automática de características, otimização de hiperparâmetros e aprendizado incremental.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.4.2.</td>
-            <td>Recursos para limpeza de dados.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Cadernos e Scripts, Qualidade de Dados</td>
-            <td>1</td>
-            <td>Para refinar dados, você os obtém de um local, limpa e modela, e então carrega o resultado em um local diferente. Você pode limpar e modelar dados tabulares com uma ferramenta de editor de fluxo gráfico chamada Refinador de Dados. Ao limpar dados, você corrige ou remove dados incorretos, incompletos, formatados incorretamente ou duplicados. Ao modelar dados, você os personaliza filtrando, ordenando, combinando ou removendo colunas. Tipos de limpeza de dados estão presentes na seção "Operações de Interface Gráfica".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.4.3.</td>
-            <td>Recursos para transformação de dados.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Cadernos e Scripts</td>
-            <td>1</td>
-            <td>Para refinar dados, você os obtém de um local, limpa e modela, e então carrega o resultado em um local diferente. Você pode limpar e modelar dados tabulares com uma ferramenta de editor de fluxo gráfico chamada Refinador de Dados. Ao limpar dados, você corrige ou remove dados incorretos, incompletos, formatados incorretamente ou duplicados. Ao modelar dados, você os personaliza filtrando, ordenando, combinando ou removendo colunas. Tipos de transformação de dados estão presentes na seção "Operações de Interface Gráfica".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.4.4.</td>
-            <td>Interface para rotulação manual de dados dos tipos texto, áudio, imagem e vídeo.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Refinamento de Dados, Preparação de Dados, Cadernos e Scripts, AutoAI</td>
-            <td>3</td>
-            <td>Rotulação manual realizada através de cadernos e/ou scripts.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.4.5.</td>
-            <td>Rotinas de preparação de dados numéricos, categóricos, textuais e temporais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Preparação de Dados, Refinamento de Dados</td>
-            <td>2</td>
-            <td>Acesse o Refinador de Dados dentro de um projeto. Clique em Novo ativo > Refinador de Dados. Em seguida, selecione os dados com os quais deseja trabalhar. Alternativamente, na aba Ativos de um projeto, abra um arquivo (formatos suportados) para visualizá-lo e, em seguida, clique em Preparar dados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.4.6.</td>
-            <td>Tratamento automático de dados – AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
-            <td>1</td>
-            <td>O AutoAI executa automaticamente as seguintes tarefas para construir e avaliar pipelines de modelos candidatos: pré-processamento de dados, seleção automática de modelos, engenharia automática de características, otimização de hiperparâmetros e aprendizado incremental.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.</td>
-            <td>Criar Modelos</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.5.1.</td>
-            <td>Importação de modelos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Importação de Modelos em Espaços de Implantação</td>
-            <td>1</td>
-            <td>Importar modelos de aprendizado de máquina treinados fora da plataforma para que possam ser implantados e testados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.2.</td>
-            <td>Comparação automática da qualidade de múltiplos modelos - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Seleção de Modelos AutoAI</td>
-            <td>1</td>
-            <td>Exemplo de visão geral do processo de comparação automática de modelos, conforme diagrama de visão geral do AutoAI.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.3.</td>
-            <td>Seleção automática de modelos - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
-            <td>1</td>
-            <td>Exemplo de visão geral do processo de seleção automática de modelos, conforme diagrama de visão geral do AutoAI.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.4.</td>
-            <td>Otimização de hiperparâmetros - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI</td>
-            <td>1</td>
-            <td>Exemplo de visão geral do processo de otimização de hiperparâmetros, conforme diagrama de visão geral do AutoAI.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.5.</td>
-            <td>Treinamento de modelos de Classificação para campos numéricos, categóricos, textuais e temporais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina</td>
-            <td>1</td>
-            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.6.</td>
-            <td>Treinamento automático de modelos de classificação - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina; Detalhes de Implementação AutoAI, Construção de Experimentos, Configuração de Experimentos</td>
-            <td>1</td>
-            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.7.</td>
-            <td>Treinamento automático de modelos de regressão - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 1.1.x - Aprendizado de Máquina; Detalhes de Implementação AutoAI, Construção de Experimentos, Configuração de Experimentos</td>
-            <td>1</td>
-            <td>Requisito atendido pela tabela de suporte a frameworks e na seção "Tipo de Problema".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.8.</td>
-            <td>Treinamento automático de modelos de agrupamento - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Nó de Cluster Automático</td>
-            <td>1</td>
-            <td>O nó de cluster automático estima e compara modelos de agrupamento que identificam grupos de registros com características semelhantes. Tipos de modelos suportados incluem TwoStep, K-Means, Kohonen, SVM de Uma Classe e K-Means-AS.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.9.</td>
-            <td>Treinamento de modelos de Descoberta de tópicos em texto.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Análise de Texto</td>
-            <td>1</td>
-            <td>A solução oferece nós especializados para tratamento de texto, com capacidades avançadas de análise de texto usando tecnologias linguísticas e Processamento de Linguagem Natural (PLN). Permite processar uma grande variedade de dados textuais não estruturados, extrair conceitos principais e organizar esses conceitos em categorias.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.10.</td>
-            <td>Treinamento de modelos de Previsão de séries temporais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implementação de Séries Temporais</td>
-            <td>1</td>
-            <td>Requisito atendido pela seção de detalhes de implementação e estágios de séries temporais.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.11.</td>
-            <td>Treinamento automático de modelos de previsão de série temporal - AutoML.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implementação de Séries Temporais</td>
-            <td>1</td>
-            <td>Requisito atendido pela seção de detalhes de implementação e estágios de séries temporais.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.12.</td>
-            <td>Treinamento de modelos de Detecção de anomalias para dados não-temporais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Modelagem de Anomalias</td>
-            <td>1</td>
-            <td>Modelos de detecção de anomalias identificam valores discrepantes ou casos incomuns nos dados, armazenando informações sobre o comportamento normal. Isso permite identificar discrepâncias sem seguir padrões conhecidos, útil em aplicações como detecção de fraudes. É um método não supervisionado, não exigindo dados de treinamento com casos conhecidos de fraude. Requisitos: um ou mais campos de entrada, apenas com papel definido como Entrada. Campos de destino são ignorados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.13.</td>
-            <td>Treinamento de modelos de Detecção de anomalias para séries temporais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Modelagem de Anomalias e Séries Temporais</td>
-            <td>1 e 2</td>
-            <td>Anomalias: Modelos de detecção de anomalias identificam valores discrepantes ou casos incomuns, armazenando informações sobre o comportamento normal, útil para detecção de fraudes. É um método não supervisionado, não exigindo dados de treinamento com casos conhecidos. Requisitos: um ou mais campos de entrada, apenas com papel definido como Entrada. Séries temporais: O nó de séries temporais permite estimar e construir modelos de suavização exponencial, ARIMA univariado ou multivariado para séries temporais, produzindo previsões com base nos dados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.14.</td>
-            <td>Treinamento de modelos de Detecção/Reconhecimento de objetos em imagem e vídeo.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Estúdio de IA; Classificador de Alfabeto de Língua de Sinais</td>
-            <td>1 e 2</td>
-            <td>O padrão de código usa uma biblioteca de aprendizado profundo para treinar um modelo de classificação de imagens em 29 classes (26 letras do alfabeto de sinais, espaço, exclusão e nada), útil para comunicação de pessoas com deficiência auditiva. Usa uma rede pré-treinada, define um classificador e treina com ambiente Python e GPU para maior rapidez.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.15.</td>
-            <td>Teste de modelo usando conjunto de dados e métricas parametrizáveis.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Estúdio de IA, Gerenciamento de Ativos, Teste e Validação, Construção e Implantação em Caderno</td>
-            <td>1, 2, 3 e 4</td>
-            <td>Este tutorial avalia e monitora um modelo implantado para prever solicitantes qualificados para hipotecas, garantindo precisão e equidade. Configura monitores para avaliar o desempenho do modelo, conforme descrito nas tarefas 4 e 5 da seção "Dados de Amostra".</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.16.</td>
-            <td>Teste automático de modelos - AutoML</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - AutoAI e Configuração de Experimentos</td>
-            <td>1</td>
-            <td>Exemplo de quadro de classificação de modelos automáticos gerado pelo AutoAI, conforme diagrama de visão geral.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.17.</td>
-            <td>Recurso para registro de modelo selecionado.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Gerenciamento de Ativos; Catálogos e Tipos de Ativos</td>
-            <td>1</td>
-            <td>Exemplo de orquestração de implantação de modelos, conforme diagrama de implantação e orquestração.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.18</td>
-            <td>Possuir a possibilidade de ajuste fino de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais).</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Estúdio de Ajuste de Modelos</td>
-            <td>1</td>
-            <td>Exemplo de visão geral do processo de ajuste fino de modelos generativos, conforme diagrama de visão geral.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.19.</td>
-            <td>Disponibilidade de modelos fundacionais para múltiplas tarefas, como incorporação, classificação, sumarização e sequência para sequência.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Modelos Fundacionais; Geração Aumentada por Recuperação</td>
-            <td>1</td>
-            <td>Requisito presente nas tabelas: Métodos de implantação de modelos fundacionais, Modelos fundacionais da plataforma, Modelos fundacionais de terceiros suportados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.20.</td>
-            <td>Recurso de Geração Aumentada por Recuperação (RAG) para otimizar a eficácia da pesquisa, recuperação e geração de informações no uso de modelos de linguagem.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Automação de Padrão RAG com AutoAI</td>
-            <td>1</td>
-            <td>Exemplo de ecossistema de geração aumentada por recuperação, conforme diagrama de visão geral do AutoAI RAG.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.21.</td>
-            <td>Possibilidade de executar algoritmos de otimização.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Otimização de Decisão</td>
-            <td>1</td>
-            <td>A plataforma permite usar um serviço de otimização de decisão para aproveitar a análise prescritiva, com motores de otimização que avaliam milhões de possibilidades para encontrar as melhores soluções prescritivas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.22.</td>
-            <td>Possibilidade de desenvolver e executar algoritmos de análise de redes complexas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Trabalho com Modelos e Aprendizado Profundo</td>
-            <td>1 e 2</td>
-            <td>Requisito presente na tabela de ferramentas para tarefas.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.5.23.</td>
-            <td>Treinamento de modelos de redes neurais de diversas arquiteturas, como feed-forward, recorrentes, memória de longo/curto prazo, convolucionais, generativas, máquinas de vetores de suporte e outras, com a possibilidade de calibração dos hiperparâmetros de cada arquitetura.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Aprendizado Profundo, Frameworks e Métodos de Fusão, Definições de Hiperparâmetros</td>
-            <td>1, 2 e 3</td>
-            <td>Requisito presente na tabela de frameworks e métodos de fusão e na tabela de definições de hiperparâmetros.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.5.24.</td>
-            <td>Avaliação de desempenho de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) por meio de métricas (ex: ROUGE, BLEU, similaridade semântica, específicas de RAG) e benchmarks, com possibilidade de implementação de métricas personalizadas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Qualidade de IA Generativa, Benchmarks de Modelos, Métricas Personalizadas</td>
-            <td>1</td>
-            <td>Requisito presente na tabela de benchmarks de compreensão de linguagem em português.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.5.25.</td>
-            <td>Ambiente interativo para teste e experimentação para grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais), com suporte para entrada e saída de texto, chat, imagem e áudio.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Laboratório de Prompts</td>
-            <td>1</td>
-            <td>No laboratório de prompts da plataforma, você pode experimentar com prompts de diferentes modelos fundacionais, explorar exemplos de prompts e salvar e compartilhar seus melhores prompts.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.6.</td>
-            <td>Implantar Modelos</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.6.1.</td>
-            <td>Permitir a implantação de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) na infraestrutura da plataforma e em infraestrutura externa.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
-            <td>1</td>
-            <td>Exemplo de implantação de modelos de IA generativa, suportando tanto implantação interna quanto externa com personalização, conforme diagrama de implantação de ativos de IA. Tipos de modelos na seção: Tipos de ativos implantáveis.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.6.2.</td>
-            <td>Permitir a implantação de modelos na infraestrutura da plataforma e em infraestrutura externa.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
-            <td>1</td>
-            <td>Exemplo de implantação de modelos, suportando tanto infraestrutura interna quanto externa, conforme diagrama de implantação de ativos de IA. Tipos de implantação na seção: Formas de implantar ativos.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.6.3.</td>
-            <td>Gerenciamento da implantação de modelos em ambientes como desenvolvimento, homologação e produção.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA</td>
-            <td>1</td>
-            <td>Exemplo de gerenciamento de implantação em diferentes ambientes, conforme diagrama de implantação de ativos de IA. Tipos de implantação na seção: Formas de implantar ativos.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.6.4.</td>
-            <td>Oferta de modelos como serviço síncrono ou assíncrono, além de execução em lote e de forma agendada.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Implantação de Ativos de IA; API de Aprendizado de Máquina</td>
-            <td>1</td>
-            <td>Exemplo de implantação de modelos como serviços síncronos, assíncronos, em lote ou agendados, conforme diagrama de implantação de ativos de IA. Tipos de implantações na seção: Tipos de implantações.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.7.</td>
-            <td>Monitorar Modelos</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.7.1.</td>
-            <td>Estatísticas de monitoramento dos modelos incluindo parâmetros como tempo de resposta, taxa de transferência, erros de execução e métricas de qualidade da inferência configuráveis.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Monitoramento de Saúde de Modelos</td>
-            <td>1</td>
-            <td>Exemplo de configuração de monitoramento com métricas como tempo de resposta e taxa de transferência, conforme diagrama de configuração de monitoramento de saúde de modelos. Tipos de estatísticas na seção: Métricas de saúde de modelos suportadas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.7.2.</td>
-            <td>Monitoramento de uso de recursos por modelo de acordo com métrica de capacidade.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Avaliações de Modelos</td>
-            <td>1</td>
-            <td>Você pode configurar avaliações para gerar insights sobre o desempenho do seu modelo. Tipos de configuração nas seções: Configuração de avaliações de modelos com a plataforma.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.7.3.</td>
-            <td>Configuração do monitoramento de modelos usando métricas de qualidade de inferência (supervisionadas e não-supervisionadas).</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Configuração de Avaliações de Modelos; Qualidade; Criação de Métricas Personalizadas</td>
-            <td>1</td>
-            <td>Você pode configurar avaliações para gerar insights sobre o desempenho do seu modelo. Tipos de configuração nas seções: Configuração de avaliações de modelos com a plataforma.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.7.4.</td>
-            <td>Retreinamento automático de modelos baseado em gatilhos de monitoramento.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Gerenciamento do Ciclo de Vida de IA</td>
-            <td>1</td>
-            <td>O gerenciamento inclui implantação rotineira, re-treinamento contínuo, atualização automática e desenvolvimento sincronizado de modelos complexos, com recursos para estratégias de gerenciamento de ciclo de vida de IA.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.7.5.</td>
-            <td>Registro de eventos de modelos implantados.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Configuração de Avaliações de Modelos; Revisão de Insights de Modelos</td>
-            <td>2</td>
-            <td>Exemplo de painel de insights de modelos implantados, conforme diagrama de painel de insights.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.3.8.</td>
-            <td>Desenvolver Aplicações</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.3.8.1.</td>
-            <td>Construção de aplicações a partir de grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) com recursos gráficos para minimizar a necessidade de codificação (low-code/no-code) ao criar, configurar e personalizar funcionalidades das aplicações desenvolvidas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Desenvolvimento de Soluções de IA Generativa</td>
-            <td>1</td>
-            <td>Você pode desenvolver soluções de IA generativa com modelos fundacionais, criando prompts para gerar, classificar, resumir ou extrair conteúdo de texto de entrada, com opções de personalização para otimizar a saída ou desempenho de inferência.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.3.8.2.</td>
-            <td>A plataforma deverá disponibilizar acesso às funcionalidades e recursos relacionados a grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) por meio de APIs.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - API de Modelos Fundacionais; Laboratório de Prompts; Código de Modelos Fundacionais</td>
-            <td>1</td>
-            <td>Você pode trabalhar com modelos fundacionais na plataforma de forma programática usando a API da plataforma.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        </tbody>
-    </table>
-</section>
-
-<section>
-    <h2>Requisitos Não Funcionais</h2>
-    <p>Esta seção detalha todos os requisitos não funcionais listados na planilha, desde o item 2.4.1 até 2.4.13.1, incluindo subitens e comprovações. A solução proposta atende à maioria dos itens nativamente (A), com alguns requerendo customização (AC) ou parametrização (AP), e dimensionamento conforme proposta comercial.</p>
-    <table>
-        <thead>
-        <tr>
-            <th>Item do Edital</th>
-            <th>Descrição do Item Edital</th>
-            <th>Nome do Arquivo</th>
-            <th>Página</th>
-            <th>Texto/Figura Comprovação</th>
-            <th>Atendido (A/NA/AP/AC)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>2.4.1.</td>
-            <td>Gerenciamento de Operações de Modelos</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.4.1.1.</td>
-            <td>Permitir o versionamento de código-fonte e demais artefatos de desenvolvimento (como scripts, cadernos e configurações) com Git integrado com solução de versionamento do Serpro (Gitlab). Ou funcionalidade de importação/exportação desses artefatos e versionados externamente.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Operações de Integração com Git</td>
-            <td>1</td>
-            <td>Em um projeto com integração padrão com Git, o repositório Git associado ao projeto não precisa estar vazio quando o projeto é criado. Por exemplo, se você desenvolveu código em um ambiente de desenvolvimento integrado em sua estação de trabalho e deseja mover para um projeto na plataforma, você pode clonar o repositório já contendo seu código e continuar trabalhando em cadernos no seu projeto com base no conteúdo dos arquivos extraídos do repositório.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.1.2.</td>
-            <td>Permitir o versionamento de conjuntos de dados utilizados nos experimentos integrada com soluções de versionamento externas (Git, git+lfs ou DVC) ou funcionalidade que permita importação/exportação de conjuntos de dados utilizados na plataforma e versionados externamente.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Operações de Integração com Git</td>
-            <td>1</td>
-            <td>Em um projeto com integração padrão com Git, o repositório Git associado ao projeto não precisa estar vazio quando o projeto é criado. Por exemplo, se você desenvolveu código em um ambiente de desenvolvimento integrado em sua estação de trabalho e deseja mover para um projeto na plataforma, você pode clonar o repositório já contendo seu código e continuar trabalhando em cadernos no seu projeto com base no conteúdo dos arquivos extraídos do repositório.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.1.3.</td>
-            <td>Permitir o versionamento de modelos integrada com soluções de versionamento externas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Versionamento em Espaços</td>
-            <td>1</td>
-            <td>Você pode criar versões de um modelo, script ou função de forma programática, usando a API comum de dados e IA, a biblioteca cliente Python da plataforma ou a ferramenta de linha de comando.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.1.4.</td>
-            <td>Possuir gerenciamento de experimentos e/ou integração com soluções externas para registro e versionamento de variações em tratamento de dados, modelagem analítica, seus parâmetros e hiperparâmetros.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - AutoAI e Aprendizado de Máquina; Orquestração de Tarefas e Pipelines</td>
-            <td>2</td>
-            <td>Exemplo de fluxo de orquestração de tarefas para gerenciamento de experimentos, conforme diagrama de ciclo de orquestração.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.1.5.</td>
-            <td>Permitir definição e versionamento de fluxos de execução de tarefas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Execução e Salvamento de Pipelines</td>
-            <td>1</td>
-            <td>Você pode executar um pipeline em tempo real para testar um fluxo enquanto trabalha. Quando estiver satisfeito com um pipeline, você pode definir um trabalho para executar um pipeline com parâmetros ou para rodar em um agendamento. Outras tarefas incluem execução, criação de trabalhos, salvamento de versões e exportação de ativos de pipeline.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.1.6.</td>
-            <td>A plataforma deve permitir gerenciar (manter em catálogo, treinar, implantar, inferir, monitorar) até 1 bilhão de modelos mantendo o cumprimento de todos os requisitos, com documentação do dimensionamento de infraestrutura e definições de arquitetura necessárias para operação nesta escala.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Planejamento de Arquitetura; Requisitos de Hardware</td>
-            <td>1</td>
-            <td>Exemplo de arquitetura de cluster para gerenciamento de modelos em grande escala, conforme diagrama de arquitetura de cluster.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.2.</td>
-            <td>Desenvolvimento</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.4.2.1.</td>
-            <td>Permitir o treinamento e inferência de modelos em CPU e GPU.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Criação e Personalização de Ambientes</td>
-            <td>1</td>
-            <td>Requisito presente na seção de criação de modelos de ambiente.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.2.2.</td>
-            <td>Permitir o treinamento e inferência de modelos em nuvens públicas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Visão Geral de Frameworks</td>
-            <td>1</td>
-            <td>Suporte a provedores de aprendizado de máquina para registro de carga, feedback, medição de precisão, detecção de viés, explicabilidade e redução automática de viés, com runtime próprio ou personalizado.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.2.3.</td>
-            <td>Permitir alocação de recursos do runtime com base em perfil, grupos e autorizações para usuários específicos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Espaços de Implantação</td>
-            <td>1</td>
-            <td>Exemplo de configuração de espaços de implantação para alocação de recursos, conforme diagrama de espaços de implantação.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.4.2.4.</td>
-            <td>Possuir integração com grandes modelos de IA generativa (linguagem, imagem, áudio e multimodais) disponíveis em nuvens públicas ou privadas, incluindo os ambientes do Serpro.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Implantação de Modelos Fundacionais; Modelos Fundacionais Suportados</td>
-            <td>2</td>
-            <td>Requisito presente nas tabelas: Métodos de implantação, Modelos fundacionais da plataforma, Modelos fundacionais de terceiros suportados.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.4.2.5.</td>
-            <td>Permitir seleção e alternância de runtime para execução de scripts e cadernos, sobretudo para treinamento de modelos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 2.1.x - Ambientes de Caderno</td>
-            <td>1</td>
-            <td>Requisito presente na seção de modelos de ambiente incluídos.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.3.</td>
-            <td>Eficiência do desempenho / Capacidade</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.4.3.1.</td>
-            <td>Ambiente de desenvolvimento/homologação:</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.4.3.1.1.</td>
-            <td>Suportar a capacidade inicial e máxima conforme itens 2.2.3.1 e 2.2.3.2 para desenvolvimento de modelos mantendo o nível de serviço acordado.</td>
-            <td>Proposta Comercial HLF Soluções LTDA</td>
-            <td>-</td>
-            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.3.2.</td>
-            <td>Ambiente de produção</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A"></td>
-        </tr>
-        <tr>
-            <td>2.4.3.2.1.</td>
-            <td>Suportar a capacidade inicial e máxima conforme itens 2.2.3.1 e 2.2.3.2 para consumo de modelos em produção mantendo o nível de serviço acordado.</td>
-            <td>Proposta Comercial HLF Soluções LTDA</td>
-            <td>-</td>
-            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.</td>
-            <td>Requisitos para Instalação</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.1.</td>
-            <td>Permitir instalação multi-inquilino permitindo isolamento de ambientes para aplicações, dados e modelos entre eles.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 5.1.x - Suporte a Multi-inquilino; Visão Geral da Plataforma</td>
-            <td>1</td>
-            <td>A plataforma suporta diferentes mecanismos de instalação e implantação para alcançar multi-inquilino.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.</td>
-            <td>Implementação na nuvem privada Serpro</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
-            <td>1</td>
-            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.1.</td>
-            <td>A plataforma deverá ser totalmente implantada no ambiente de nuvem privada do Serpro, utilizando os recursos e a infraestrutura de TI disponíveis nessa nuvem.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
-            <td>1</td>
-            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.2.</td>
-            <td>Todas as licenças de softwares que componham a plataforma e não estejam disponíveis na nuvem privada do Serpro, inclusos sistemas operacionais e bancos de dados, deverão ser fornecidas, com suporte e atualizações durante toda a vigência do contrato.</td>
-            <td>Proposta Comercial HLF Soluções LTDA</td>
-            <td>-</td>
-            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.3.</td>
-            <td>A arquitetura da plataforma deverá ser dimensionada e informada ao Serpro de forma a atender aos requisitos expostos neste documento.</td>
-            <td>Proposta Comercial HLF Soluções LTDA</td>
-            <td>-</td>
-            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.4.</td>
-            <td>A plataforma deverá seguir as diretrizes estabelecidas para aplicações nativas em nuvem, atendendo aos requisitos de empacotamento como contêineres, multi-inquilino, microsserviços e infraestrutura imutável, garantindo alta disponibilidade, tolerância a falhas, autoescalonamento e balanceamento de cargas.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
-            <td>3</td>
-            <td>Exemplo de arquitetura nativa em nuvem, conforme diagrama de arquitetura da plataforma.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.5.</td>
-            <td>A arquitetura da plataforma deverá ser dimensionada prevendo a utilização de zonas de disponibilidade redundantes, garantindo que, caso uma zona deixe de funcionar ou tenha degradação do tempo de resposta, a segunda seja acionada para atendimento das requisições.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Estratégias de Implantação; Configuração de Rotas; Configurações de Máquinas de Controle</td>
-            <td>1, 2 e 3</td>
-            <td>Implantação: Estratégias de implantação permitem alterar ou atualizar aplicações sem interrupções, de modo que os usuários mal percebam a mudança. Alta disponibilidade: Uma rota permite hospedar sua aplicação em um URL público, podendo ser segura ou não, dependendo da configuração de segurança de rede.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.6.</td>
-            <td>Deverão ser previstos ambientes de desenvolvimento, homologação e produção.</td>
-            <td>Proposta Comercial HLF Soluções LTDA</td>
-            <td>-</td>
-            <td>Requisito atendido com dimensionamento da proposta comercial da HLF Soluções LTDA.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.4.2.7.</td>
-            <td>A plataforma deverá ser implantada sobre infraestrutura e softwares básicos comuns de mercado, sem qualquer dependência ou presença de hardwares específicos. Caso haja algum requisito obrigatório para o funcionamento da plataforma, como token de hardware ou instrução específica de processador, a possibilidade de adoção deverá ser avaliada previamente pelo Serpro.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
-            <td>1</td>
-            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.</td>
-            <td>Compatibilidade com Nuvem Privada do Serpro</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.1</td>
-            <td>A plataforma deverá ser totalmente construída usando protocolo IPv4 e suportar o protocolo IPv6 para comunicação com o usuário final.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Notas de Lançamento</td>
-            <td>1</td>
-            <td>Atendimento ao requisito no item: Mudança de sub-rede de mascaramento para novos clusters.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.2</td>
-            <td>A intercomunicação entre os componentes internos da plataforma deverá ocorrer de forma criptografada.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Criptografia de Dados; Instalação com Conformidade</td>
-            <td>1</td>
-            <td>Você pode habilitar a criptografia de dados para seu cluster para fornecer uma camada adicional de segurança de dados.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.3</td>
-            <td>A plataforma deverá ser capaz de interoperar em ambientes com NAT (Tradução de Endereço de Rede) e Firewalls.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Instalação em Bare Metal; Balanceamento de Carga</td>
-            <td>1</td>
-            <td>Atendimento ao requisito no item: Preparando a infraestrutura provisionada pelo usuário.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4</td>
-            <td>Automação para o ambiente de Nuvem Privada do Serpro</td>
-            <td>Documentação Plataforma HLF Soluções LTDA 4.8.x - Requisitos de Hardware</td>
-            <td>1</td>
-            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4.1</td>
-            <td>A ferramenta de automação selecionada deverá ser compatível com os componentes da nuvem privada do Serpro.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
-            <td>1</td>
-            <td>Requisito atendido de acordo com os requisitos de hardware e software da solução.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4.2</td>
-            <td>Deverá ser observada e utilizada a versão mais atual da ferramenta de automação.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
-            <td>1</td>
-            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4.3</td>
-            <td>O código utilizado para automação deverá ser documentado e cedido como parte da plataforma.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
-            <td>1</td>
-            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4.4</td>
-            <td>Tanto a documentação quanto a construção do código deverão seguir as melhores práticas de mercado.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
-            <td>1</td>
-            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.4.5</td>
-            <td>Fazer uso efetivo de um sistema de controle de versão (Git).</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Plataforma de Orquestração Certificada</td>
-            <td>1</td>
-            <td>Requisito atendido pela ferramenta de orquestração nativa em nuvem, com personalização necessária.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.4.5.5</td>
-            <td>Arquitetura</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.5.1</td>
-            <td>Deve ser informada a quantidade média de recursos (CPU e RAM) que a plataforma assumirá quando ociosa.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Pré-requisitos de Instalação</td>
-            <td>1</td>
-            <td>Atendimento ao requisito no item: Requisitos mínimos de recursos para instalação de cluster.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.6</td>
-            <td>Contêineres / Máquinas Virtuais</td>
-            <td>Solução roda em ambiente de orquestração nativa em nuvem</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.6.1</td>
-            <td>A plataforma deve permitir a instalação por meio de padrões abertos de contêineres Docker em orquestradores Kubernetes, garantindo a aplicabilidade dos recursos de elasticidade e disponibilidade, bem como a aplicação de boas práticas de operação nessa arquitetura de infraestrutura.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Instalação; Administração da Plataforma; Arquitetura da Plataforma</td>
-            <td>1</td>
-            <td>Requisito atendido na seção: Visão geral da instalação, com personalização necessária.</td>
-            <td class="attended-AC">AC</td>
-        </tr>
-        <tr>
-            <td>2.4.5.7</td>
-            <td>Armazenamento de Objetos / Armazenamento da Plataforma</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Requisitos de Armazenamento</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.7.1</td>
-            <td>Caso utilize armazenamento de objetos, a plataforma deverá ser compatível com a plataforma de armazenamento de objetos disponível na nuvem privada do Serpro Cloud ONE, sendo esta compatível com protocolo S3.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
-            <td>1</td>
-            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.7.2</td>
-            <td>Caso utilize armazenamento de objetos, a solução deverá utilizar a API disponibilizada pela plataforma de armazenamento de objetos.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
-            <td>1</td>
-            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.7.3</td>
-            <td>Caso utilize armazenamento de objetos, os buckets e objetos criados deverão utilizar o nível mais restrito de acesso possível, reduzindo assim a exposição de informações.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Fontes de Dados Suportadas; Considerações de Armazenamento; Requisitos de Armazenamento</td>
-            <td>1</td>
-            <td>Requisito atendido na seção de conectores, desde que o tipo de S3 esteja na lista de suportados pela arquitetura de instalação ou fontes suportadas.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.8</td>
-            <td>Software Básico</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.8.1</td>
-            <td>A plataforma deverá adotar apenas os sistemas operacionais e bancos de dados suportados pelo Serpro para composição da sua arquitetura.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Sistemas Operacionais e Bancos de Dados</td>
-            <td>1</td>
-            <td>A plataforma utiliza sistemas operacionais de contêineres de propósito único com padrões de alta qualidade e recursos de atualização remota automatizada, suportados apenas como componente da plataforma de orquestração.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        <tr>
-            <td>2.4.5.8.2</td>
-            <td>A plataforma deverá adotar apenas os sistemas operacionais: Red Hat, CentOS e/ou Rocky/Alma Linux, nas suas versões mais atuais.</td>
-            <td>Documentação Plataforma HLF Soluções LTDA - Arquitetura da Plataforma; Visão Geral da Plataforma</td>
-            <td>1</td>
-            <td>A plataforma utiliza sistemas operacionais de contêineres de propósito único com padrões de alta qualidade e recursos de atualização remota automatizada, suportados apenas como componente da plataforma de orquestração.</td>
-            <td class="attended-A">A</td>
-        </tr>
-        </tbody>
-    </table>
-</section>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div aria-label="Skip to main content" role="region"><a class="skipToContent_fXgn" href="index.html#__docusaurus_skipToContent_fallback">Pule para o conteúdo principal</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="flex w-full flex-col"><div><div class="navbar__inner"><div class="navbar__items"><button aria-expanded="false" aria-label="Toggle navigation bar" class="navbar__toggle clean-btn" type="button"><svg aria-hidden="true" height="30" viewbox="0 0 30 30" width="30"><path d="M4 7h22M4 15h22M4 23h22" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></path></svg></button><a class="navbar__brand" href="index.html"><div class="navbar__logo"><img alt="" class="themedComponent_mlkZ themedComponent--light_NVdE" src="images/logo.png"/><img alt="" class="themedComponent_mlkZ themedComponent--dark_xIcU" src="images/logo-dark.png"/></div><b class="navbar__title text--truncate">Abra Webui</b></a></div><div class="navbar__items navbar__items--right"><a aria-label="GitHub repository" class="navbar__item navbar__link header-github-link" href="https://github.com/open-webui/open-webui" rel="noopener noreferrer" target="_blank"></a><a aria-label="Discord server" class="navbar__item navbar__link header-discord-link" href="https://discord.com/invite/5rJgQTnV4s" rel="noopener noreferrer" target="_blank"></a><div class="toggle_vylO colorModeToggle_DEke"><button aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" disabled="" title="Switch between dark and light mode (currently light mode)" type="button"><svg class="lightToggleIcon_pyhR" height="24" viewbox="0 0 24 24" width="24"><path d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z" fill="currentColor"></path></svg><svg class="darkToggleIcon_wfgR" height="24" viewbox="0 0 24 24" width="24"><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z" fill="currentColor"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" class="search-icon" role="button" tabindex="0"></span><input aria-label="Search" class="navbar__search-input search-bar" disabled="" id="search_input_react" placeholder="Loading..." type="search"/></div></div></div></div></div><div class="mt-3 min-[996px]:hidden"><div class="w-full"><div class="flex w-full flex-col justify-center"><a class="flex w-full items-center justify-center" href="https://forms.gle/92mvG3ESYj47zzRL9" target="_blank"><img alt="Open WebUI" class="w-full rounded-xl object-cover h-10" loading="lazy" src="sponsors/banners/placeholder.png"/></a><div class="mt-1 line-clamp-1 text-right text-xs font-semibold text-gray-600 dark:text-gray-300">O ponto de banner superior é reservado para patrocinadores Emerald+ Enterprise</div></div></div></div></div><div class="navbar-sidebar__backdrop" role="presentation"></div></nav><div class="main-wrapper mainWrapper_z2l0" id="__docusaurus_skipToContent_fallback"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="flex h-full flex-col overflow-auto"><div class="h-fit"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a aria-current="page" class="menu__link menu__link--active" href="index.html">🏡 Home</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="getting-started.html">🚀 Introdução</a><button aria-expanded="false" aria-label="Expand sidebar category '🚀 Getting Started'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="features.html">⭐ Recursos</a><button aria-expanded="false" aria-label="Expand sidebar category '⭐ Features'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="troubleshooting.html">🛠️ Solução de problemas</a><button aria-expanded="false" aria-label="Expand sidebar category '🛠️ Troubleshooting'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="category/-tutorials.html">📝 Tutoriais</a><button aria-expanded="false" aria-label="Expand sidebar category '📝 Tutorials'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="openapi-servers/index.html">🔨 Servidores de ferramentas OpenApi</a><button aria-expanded="false" aria-label="Expand sidebar category '🔨 OpenAPI Tool Servers'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="pipelines/index.html">⚡ oleodutos</a><button aria-expanded="false" aria-label="Expand sidebar category '⚡ Pipelines'" class="clean-btn menu__caret" type="button"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="faq.html">📋 FAQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="roadmap.html">Roteiro Roteiro</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="security.html">🔒 Política de segurança</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="contributing.html">🤝 Contribuindo</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="sponsorships.html">🌐 Patrocínio</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="license.html">⚖️ Licença aberta da webui</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="enterprise.html">🏢 Abra webui para empresas</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="mission.html">🎯 Nossa missão</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="team.html">👥 Nossa equipe</a></li></ul></nav></div></div><div class="mt-3 px-5"><div class="pb-4"><div class="mb-2"><div class="mb-1 text-xs font-medium text-gray-600 underline dark:text-gray-300">Patrocinado por<!-- -->Escala traseira</div><a href="https://tailscale.com/blog/self-host-a-local-ai-stack/?utm_source=OpenWebUI&amp;utm_medium=paid-ad-placement&amp;utm_campaign=OpenWebUI-Docs" target="_blank"><img alt="Tailscale" class="block h-12 w-full rounded-xl object-cover" loading="lazy" src="sponsors/banners/tailscale-banner-mobile.png"/></a><div class="mt-1 line-clamp-2 text-right text-xs font-medium text-gray-600 dark:text-gray-300">Conecte a IA auto-hospedada a qualquer dispositivo com escala traseira</div></div></div></div></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav aria-label="Breadcrumbs" class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="index.html"><svg class="breadcrumbHomeIcon_YNFT" viewbox="0 0 24 24"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><span class="breadcrumbs__link" itemprop="name">🏡 Home</span><meta content="1" itemprop="position"/></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button class="clean-btn tocCollapsibleButton_TO0P" type="button">Nesta página</button></div><div class="theme-doc-markdown markdown"><header><h1>Abra Webui</h1></header>
+<p><strong>Open webui é um<a href="features/plugin/index.html" rel="noopener noreferrer" target="_blank">extensível</a>, Plataforma de IA auto-amigável e rica em recursos e amigáveis, projetada para operar totalmente offline.</strong>Ele suporta vários corredores LLM como<strong>Ollama</strong>e<strong>APIs compatíveis com OpenAI</strong>, com<strong>Engine de inferência embutido</strong>Para Rag, tornando -o um<strong>poderosa solução de implantação de IA</strong></p>
+<p>Apaixonado por IA de código aberto?<a href="https://careers.openwebui.com/" rel="noopener noreferrer" target="_blank">Junte -se à nossa equipe →</a></p>
+<p><img alt="GitHub stars" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/stars/open-webui/open-webui?style=social"/>
+<img alt="GitHub forks" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/forks/open-webui/open-webui?style=social"/>
+<img alt="GitHub watchers" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/watchers/open-webui/open-webui?style=social"/>
+<img alt="GitHub repo size" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/repo-size/open-webui/open-webui"/>
+<img alt="GitHub language count" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/languages/count/open-webui/open-webui"/>
+<img alt="GitHub top language" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/languages/top/open-webui/open-webui"/>
+<img alt="GitHub last commit" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/github/last-commit/open-webui/open-webui?color=red"/>
+<a href="https://discord.gg/5rJgQTnV4s" rel="noopener noreferrer" target="_blank"><img alt="Discord" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&amp;logoColor=white"/></a>
+<a href="https://github.com/sponsors/tjbck" rel="noopener noreferrer" target="_blank"><img alt="" class="img_ev3q" decoding="async" loading="lazy" src="https://img.shields.io/static/v1?label=Sponsor&amp;message=%E2%9D%A4&amp;logo=GitHub&amp;color=%23fe8e86"/></a></p>
+<p><img alt="Open WebUI Demo" class="img_ev3q" decoding="async" height="1080" loading="lazy" src="assets/images/demo-d3952c8561c4808c1d447fc061c71174.gif" width="1920"/></p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewbox="0 0 12 16"><path d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z" fill-rule="evenodd"></path></svg></span>dica</div><div class="admonitionContent_BuS1"><p><strong>Procurando um<a href="enterprise.html" rel="noopener noreferrer" target="_blank">Plano corporativo</a></strong>-<strong><a href="mailto:sales@openwebui.com" rel="noopener noreferrer" target="_blank">Fale com nossa equipe de vendas hoje!</a></strong></p><p>Pegar<strong>recursos aprimorados</strong>, incluindo<strong>Tempo e marca personalizados</strong>, Assim,<strong>Suporte de Acordo de Nível de Serviço (SLA)</strong>, Assim,<strong>Versões de suporte de longo prazo (LTS)</strong>, e<strong>mais!</strong></p></div></div>
+<div class="w-full"><div class="flex w-full flex-col justify-center"><div class="mb-1 text-xs font-semibold text-gray-600 underline dark:text-gray-300">Patrocinado por<!-- -->Escala traseira</div><a class="flex w-full items-center justify-center" href="https://tailscale.com/blog/self-host-a-local-ai-stack/?utm_source=OpenWebUI&amp;utm_medium=paid-ad-placement&amp;utm_campaign=OpenWebUI-Docs" target="_blank"><img alt="Tailscale" class="hidden w-full rounded-xl object-cover md:block h-18" loading="lazy" src="sponsors/banners/tailscale-banner.png"/><img alt="Tailscale" class="block w-full rounded-xl object-cover md:hidden h-18" loading="lazy" src="sponsors/banners/tailscale-banner-mobile.png"/></a><div class="mt-1 line-clamp-1 text-right text-xs font-semibold text-gray-600 dark:text-gray-300">Conecte a IA auto-hospedada a qualquer dispositivo com escala traseira</div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="quick-start-with-docker-">Iniciar rápido com Docker 🐳<a aria-label="Direct link to Quick Start with Docker 🐳" class="hash-link" href="index.html#quick-start-with-docker-" title="Direct link to Quick Start with Docker 🐳"></a></h2>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewbox="0 0 14 16"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z" fill-rule="evenodd"></path></svg></span>informações</div><div class="admonitionContent_BuS1"><p><strong>WebSocket</strong>O suporte é necessário para que o webui aberto funcione corretamente. Verifique se a configuração da sua rede permite as conexões do WebSocket.</p></div></div>
+<p><strong>Se Ollama estiver no seu computador</strong>, use este comando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -D -P 3000: 8080 --Add-host = host.docker.internal: host-gateway -v open-webui:/app/backend/data--name Open-Webui ---restart sempre ghcr.io/open-webui/open-webui:main</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<p><strong>Para executar o Open Webui com o suporte da GPU da NVIDIA</strong>, use este comando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -D -P 3000: 8080--GPUS all --Add-host = host.docker.internal: host-gateway -V Open-Webui:/App/backend/Data-Name Open-Webui ----Restart sempre ghcr.io/open-webui/open-webui:cuda</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="open-webui-bundled-with-ollama">Open webui agrupado com ollama<a aria-label="Direct link to Open WebUI Bundled with Ollama" class="hash-link" href="index.html#open-webui-bundled-with-ollama" title="Direct link to Open WebUI Bundled with Ollama"></a></h3>
+<p>Este método de instalação usa uma imagem de contêiner único que agrupa o Open Webui com o Ollama, permitindo uma configuração simplificada por meio de um único comando. Escolha o comando apropriado com base em sua configuração de hardware:</p>
+<ul>
+<li>
+<p><strong>Com suporte à GPU</strong>:
+Utilize os recursos da GPU executando o seguinte comando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -D -P 3000: 8080 - -GPUS = All -V ollama: /root/.ollama -v Open -Webui:/App/backend/data -Name Open -Webui ---restart sempre ghcr.io/open-webui/open-webui:ollama</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p><strong>Apenas para CPU</strong>:
+Se você não estiver usando uma GPU, use este comando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -d -p 3000: 8080 -V ollama: /root/.ollama -v Open -Webui:/App/backend/data -Name Open -Webui ---restart sempre ghcr.io/open-webui/open-webui:olama</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+</ul>
+<p>Ambos os comandos facilitam uma instalação embutida e sem complicações de Webui e Ollama aberto, garantindo que você possa colocar tudo em funcionamento rapidamente.</p>
+<p>Após a instalação, você pode acessar o Open Webui em<a href="http://localhost:3000" rel="noopener noreferrer" target="_blank">http: // localhost: 3000</a>. Aproveitar! 😄</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="using-the-dev-branch-">Usando o ramo dev 🌙<a aria-label="Direct link to Using the Dev Branch 🌙" class="hash-link" href="index.html#using-the-dev-branch-" title="Direct link to Using the Dev Branch 🌙"></a></h3>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewbox="0 0 16 16"><path d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z" fill-rule="evenodd"></path></svg></span>aviso</div><div class="admonitionContent_BuS1"><p>O<code>:dev</code>A filial contém os mais recentes recursos e alterações instáveis. Use -o por seu próprio risco, pois pode ter erros ou recursos incompletos.</p></div></div>
+<p>Se você quiser experimentar os recursos mais recentes de borda e está bem com instabilidade ocasional, você pode usar o<code>:dev</code>Tag assim:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -d -p 3000: 8080 -V Open-Webui:/App/backend/data-Nome Open-Webui ---restart sempre ghcr.io/open-webui/open-webui:dev</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="updating-open-webui">Atualizando o Open Webui<a aria-label="Direct link to Updating Open WebUI" class="hash-link" href="index.html#updating-open-webui" title="Direct link to Updating Open WebUI"></a></h3>
+<p>Para atualizar facilmente o Open Webui Container, siga estas etapas:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="manual-update">Atualização manual<a aria-label="Direct link to Manual Update" class="hash-link" href="index.html#manual-update" title="Direct link to Manual Update"></a></h4>
+<p>Usar<a href="https://containrrr.dev/watchtower" rel="noopener noreferrer" target="_blank">Torre de vigia</a>Para atualizar o contêiner do Docker manualmente:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run-RM -V /var/run/docker.sock:/var/run/docker.sock Contererrr/Watchtower-Run-Once Open-Webui</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="automatic-updates">Atualizações automáticas<a aria-label="Direct link to Automatic Updates" class="hash-link" href="index.html#automatic-updates" title="Direct link to Automatic Updates"></a></h4>
+<p>Mantenha seu contêiner atualizado automaticamente a cada 5 minutos:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Docker Run -D -Name WatchTower - -restart a menos que pareça -v /var/run/docker.sock:/var/run/docker.sock contenharrr/watchtower -Interval 300 Open -Webui</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<p><strong>Observação</strong>: Substituir<code>open-webui</code>com o nome do seu contêiner, se for diferente.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="manual-installation">Instalação manual<a aria-label="Direct link to Manual Installation" class="hash-link" href="index.html#manual-installation" title="Direct link to Manual Installation"></a></h2>
+<p>Existem duas maneiras principais de instalar e executar o webui aberto: usando o<code>uv</code>gerente de tempo de execução ou python<code>pip</code>. Enquanto ambos os métodos são eficazes,<strong>Recomendamos fortemente usar<code>uv</code></strong>pois simplifica o gerenciamento do meio ambiente e minimiza possíveis conflitos.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="installation-with-uv-recommended">Instalação com<code>uv</code>(Recomendado)<a aria-label="Direct link to installation-with-uv-recommended" class="hash-link" href="index.html#installation-with-uv-recommended" title="Direct link to installation-with-uv-recommended"></a></h3>
+<p>O<code>uv</code>O Runtime Manager garante gerenciamento de ambiente Python sem costura para aplicativos como o Open Webui. Siga estas etapas para começar:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-install-uv">1. Instale<code>uv</code><a aria-label="Direct link to 1-install-uv" class="hash-link" href="index.html#1-install-uv" title="Direct link to 1-install-uv"></a></h4>
+<p>Escolha o comando de instalação apropriado para o seu sistema operacional:</p>
+<ul>
+<li>
+<p><strong>MacOS/Linux</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Curl -lssf https://astral.sh/uv/install.sh | sh</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p><strong>Windows</strong></p>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">PowerShell -ExecutionPolicy Bypass -C "Irm https://astral.sh/uv/install.ps1 | iex"</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-run-open-webui">2. Execute o Open Webui<a aria-label="Direct link to 2. Run Open WebUI" class="hash-link" href="index.html#2-run-open-webui" title="Direct link to 2. Run Open WebUI"></a></h4>
+<p>Uma vez<code>uv</code>está instalado, a execução do Open Webui é uma brisa. Use o comando abaixo, garantindo definir o<code>DATA_DIR</code>Variável de ambiente para evitar a perda de dados. Os caminhos de exemplo são fornecidos para cada plataforma:</p>
+<ul>
+<li>
+<p><strong>MacOS/Linux</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Data_dir = ~/.open-webui uvx-python 3.11 webui@mais recente</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p><strong>Windows</strong></p>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">$ Env: data_dir = "C: \ Open-Webui \ Data"; UVX-Python 3.11 Open-webui@mais recente saque</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="installation-with-pip">Instalação com<code>pip</code><a aria-label="Direct link to installation-with-pip" class="hash-link" href="index.html#installation-with-pip" title="Direct link to installation-with-pip"></a></h3>
+<p>Para usuários que instalam o Open Webui com o gerenciador de pacotes do Python<code>pip</code>, Assim,<strong>É altamente recomendável usar gerentes de tempo de execução do Python como<code>uv</code>ou<code>conda</code></strong>. Essas ferramentas ajudam a gerenciar os ambientes Python de maneira eficaz e evitar conflitos.</p>
+<p>Python 3.11 é o ambiente de desenvolvimento. O Python 3.12 parece funcionar, mas não foi completamente testado. Python 3.13 é totalmente não testado -<strong>Use por sua própria conta e risco</strong></p>
+<ol>
+<li>
+<p><strong>Instale o Open Webui</strong></p>
+<p>Abra seu terminal e execute o seguinte comando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">PIP Instale o Open-Webui</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p><strong>Inicie o Open Webui</strong></p>
+<p>Depois de instalado, inicie o servidor usando:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Aberta-webui serve</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="updating-open-webui-1">Atualizando o Open Webui<a aria-label="Direct link to Updating Open WebUI" class="hash-link" href="index.html#updating-open-webui-1" title="Direct link to Updating Open WebUI"></a></h3>
+<p>Para atualizar para a versão mais recente, basta executar:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa" tabindex="0"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">pip install-upgrade Open-Webui</span><br/></span></code></pre><div class="buttonGroup__atx"><button aria-label="Copy code to clipboard" class="clean-btn" title="Copy" type="button"><span aria-hidden="true" class="copyButtonIcons_eSgA"><svg class="copyButtonIcon_y97N" viewbox="0 0 24 24"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" fill="currentColor"></path></svg><svg class="copyButtonSuccessIcon_LjdS" viewbox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="currentColor"></path></svg></span></button></div></div></div>
+<p>Este método instala todas as dependências necessárias e inicia o Open Webui, permitindo uma configuração simples e eficiente. Após a instalação, você pode acessar o Open Webui em<a href="http://localhost:8080" rel="noopener noreferrer" target="_blank">http: // localhost: 8080</a>. Aproveitar! 😄</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="other-installation-methods">Outros métodos de instalação<a aria-label="Direct link to Other Installation Methods" class="hash-link" href="index.html#other-installation-methods" title="Direct link to Other Installation Methods"></a></h2>
+<p>Oferecemos várias alternativas de instalação, incluindo métodos de instalação nativa que não são do Docker, Docker Compose, Kustomize e Helm. Visite nosso<a href="getting-started.html" rel="noopener noreferrer" target="_blank">Abra a documentação da Webui</a>ou junte -se ao nosso<a href="https://discord.gg/5rJgQTnV4s" rel="noopener noreferrer" target="_blank">Comunidade Discord</a>Para orientação abrangente.</p>
+<p>Continue com o completo<a href="getting-started.html">Guia de início</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="sponsors-">Patrocinadores 🙌<a aria-label="Direct link to Sponsors 🙌" class="hash-link" href="index.html#sponsors-" title="Direct link to Sponsors 🙌"></a></h2>
+<div><div class="mb-4"><div class="text-xl font-medium text-black dark:text-white">Esmeralda</div><hr class="mb-3 mt-1 border-gray-200 dark:border-gray-700"/><div class="flex flex-wrap items-start justify-start gap-5"><div class="mb-2 flex flex-col"><div class="mb-1.5 text-[0.6rem] font-semibold text-gray-500 dark:text-gray-400"><a class="no-underline" href="https://warp.dev/open-webui" target="_blank">Urdidura</a></div><a class="no-underline" href="https://warp.dev/open-webui" target="_blank"><div class="flex w-32 items-start gap-2.5 md:w-48"><div class="basis-1/2"><img alt="Warp" class="rounded-xl" loading="lazy" src="sponsors/logos/warp.png"/></div><div class="flex basis-1/2"><div class="line-clamp-4 text-[0.6rem] font-semibold text-gray-500 no-underline dark:text-gray-400 md:line-clamp-5">O terminal inteligente para desenvolvedores</div></div></div></a></div><div class="mb-2 flex flex-col"><div class="mb-1.5 text-[0.6rem] font-semibold text-gray-500 dark:text-gray-400"><a class="no-underline" href="https://tailscale.com/blog/self-host-a-local-ai-stack/?utm_source=OpenWebUI&amp;utm_medium=paid-ad-placement&amp;utm_campaign=OpenWebUI-Docs" target="_blank">Escala traseira</a></div><a class="no-underline" href="https://tailscale.com/blog/self-host-a-local-ai-stack/?utm_source=OpenWebUI&amp;utm_medium=paid-ad-placement&amp;utm_campaign=OpenWebUI-Docs" target="_blank"><div class="flex w-32 items-start gap-2.5 md:w-48"><div class="basis-1/2"><img alt="Tailscale" class="rounded-xl" loading="lazy" src="sponsors/logos/tailscale.png"/></div><div class="flex basis-1/2"><div class="line-clamp-4 text-[0.6rem] font-semibold text-gray-500 no-underline dark:text-gray-400 md:line-clamp-5">Conecte a IA auto-hospedada a qualquer dispositivo com escala traseira</div></div></div></a></div></div></div><div class="mb-4"><div class="text-xl font-medium text-black dark:text-white">Jade</div><hr class="mb-3 mt-1 border-gray-200 dark:border-gray-700"/><div class="flex flex-wrap items-start justify-start gap-5"><div class="mb-2 flex flex-col"><div class="mb-1.5 text-[0.6rem] font-semibold text-gray-500 dark:text-gray-400"><a class="no-underline" href="https://openwebui.com" target="_blank">Abra Webui</a></div><a class="no-underline" href="https://openwebui.com" target="_blank"><div class="flex w-32 items-start gap-2.5 md:w-48"><div class="basis-1/2"><img alt="Open WebUI" class="rounded-xl" loading="lazy" src="sponsors/sponsor.png"/></div><div class="flex basis-1/2"><div class="line-clamp-4 text-[0.6rem] font-semibold text-gray-500 no-underline dark:text-gray-400 md:line-clamp-5">Em uma missão para criar a melhor interface do usuário da IA.</div></div></div></a></div></div></div></div>
+<p>Somos incrivelmente gratos pelo apoio generoso de nossos patrocinadores. Suas contribuições nos ajudam a manter e melhorar nosso projeto, garantindo que possamos continuar a oferecer um trabalho de qualidade à nossa comunidade. Obrigado!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="acknowledgements-">Agradecimentos 🙏<a aria-label="Direct link to Acknowledgements 🙏" class="hash-link" href="index.html#acknowledgements-" title="Direct link to Acknowledgements 🙏"></a></h2>
+<p>Somos profundamente gratos pelo generoso apoio do subsídio fornecido por:</p>
+<div class="grid gap-4 items-start grid-cols-1 md:grid-cols-2"><a class="flex flex-col w-fit gap-2 items-center" href="https://a16z.com/advancing-open-source-ai-through-benchmarks-and-bold-experimentation/" rel="noopener" target="_blank" title="A16z Open Source AI Grant 2025"><img alt="A16z" src="sponsors/grants/a16z.png" style="vertical-align:middle;margin-right:12px" width="300px"/><span style="vertical-align:middle;font-weight:600;font-size:1.05em">A16Z Open Source AI Grant 2025</span></a><a class="flex flex-col w-fit gap-2 items-center" href="https://builders.mozilla.org/" rel="noopener" target="_blank" title="Mozilla Builders 2024"><img alt="Mozilla" src="sponsors/grants/mozilla.png" style="vertical-align:middle;margin-right:12px" width="300px"/><span style="vertical-align:middle;font-weight:600;font-size:1.05em">Mozilla Builders 2024</span></a><a class="flex flex-col w-fit gap-2 items-center" href="https://github.com/accelerator" rel="noopener" target="_blank" title="GitHub Accelerator 2024"><img alt="GitHub" src="sponsors/grants/github.png" style="vertical-align:middle;margin-right:16px" width="300px"/><span style="vertical-align:middle;font-weight:600;font-size:1.05em">Acelerador do GitHub 2024</span></a></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a class="theme-edit-this-page" href="https://github.com/open-webui/docs/blob/main/docs/intro.mdx" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="iconEdit_Z9Sw" fill="currentColor" height="20" viewbox="0 0 40 40" width="20"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edite esta página</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav aria-label="Docs pages" class="pagination-nav docusaurus-mt-lg"><a class="pagination-nav__link pagination-nav__link--next" href="getting-started.html"><div class="pagination-nav__sublabel">Próximo</div><div class="pagination-nav__label">🚀 Introdução</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="index.html#quick-start-with-docker-">Iniciar rápido com Docker 🐳</a><ul><li><a class="table-of-contents__link toc-highlight" href="index.html#open-webui-bundled-with-ollama">Open webui agrupado com ollama</a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#using-the-dev-branch-">Usando o ramo dev 🌙</a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#updating-open-webui">Atualizando o Open Webui</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="index.html#manual-installation">Instalação manual</a><ul><li><a class="table-of-contents__link toc-highlight" href="index.html#installation-with-uv-recommended">Instalação com<code>uv</code>(Recomendado)</a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#installation-with-pip">Instalação com<code>pip</code></a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#updating-open-webui-1">Atualizando o Open Webui</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="index.html#other-installation-methods">Outros métodos de instalação</a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#sponsors-">Patrocinadores 🙌</a></li><li><a class="table-of-contents__link toc-highlight" href="index.html#acknowledgements-">Agradecimentos 🙏</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Documentos</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="getting-started.html">Começando</a></li><li class="footer__item"><a class="footer__link-item" href="faq.html">Perguntas frequentes</a></li></ul></div><div class="col footer__col"><div class="footer__title">Comunidade</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="https://github.com/open-webui/open-webui" rel="noopener noreferrer" target="_blank">Github<svg aria-hidden="true" class="iconExternalLink_nPIU" height="13.5" viewbox="0 0 24 24" width="13.5"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" fill="currentColor"></path></svg></a></li><li class="footer__item"><a class="footer__link-item" href="https://discord.gg/5rJgQTnV4s" rel="noopener noreferrer" target="_blank">Discórdia<svg aria-hidden="true" class="iconExternalLink_nPIU" height="13.5" viewbox="0 0 24 24" width="13.5"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" fill="currentColor"></path></svg></a></li><li class="footer__item"><a class="footer__link-item" href="https://x.com/OpenWebUI" rel="noopener noreferrer" target="_blank">𝕏<svg aria-hidden="true" class="iconExternalLink_nPIU" height="13.5" viewbox="0 0 24 24" width="13.5"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z" fill="currentColor"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Mais</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="https://github.com/open-webui/open-webui/blob/main/CHANGELOG.md" rel="noopener noreferrer" target="_blank">Notas de liberação</a></li><li class="footer__item"><a class="footer__link-item" href="https://openwebui.com" rel="noopener noreferrer" target="_blank">Sobre</a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><img class="footer__logo themedComponent_mlkZ themedComponent--light_NVdE" height="100" src="images/logo-dark.png"/><img class="footer__logo themedComponent_mlkZ themedComponent--dark_xIcU" height="100" src="images/logo-dark.png"/></div></div></div></footer></div>
+</body>
+</html>

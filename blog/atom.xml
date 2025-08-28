@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://openwebui.com/blog</id>
+    <title>Open WebUI Blog</title>
+    <updated>2024-06-11T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://openwebui.com/blog"/>
+    <subtitle>Open WebUI Blog</subtitle>
+    <icon>https://openwebui.com/images/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[UI Should Not Be The Bottleneck]]></title>
+        <id>https://openwebui.com/blog/ui-should-not-be-the-bottleneck</id>
+        <link href="https://openwebui.com/blog/ui-should-not-be-the-bottleneck"/>
+        <updated>2024-06-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[WIP]]></summary>
+        <content type="html"><![CDATA[<p>WIP</p>]]></content>
+        <author>
+            <name>Tim J. Baek</name>
+            <uri>https://github.com/tjbck</uri>
+        </author>
+        <category label="release" term="release"/>
+        <category label="v0.3.3" term="v0.3.3"/>
+    </entry>
+</feed>
