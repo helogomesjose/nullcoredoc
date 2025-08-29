@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Nullcore Blog</title>
-        <link>https://openwebui.com/blog</link>
+        <link>https://doc.nullcore.com.br/blog</link>
         <description>Nullcore Blog</description>
         <lastBuildDate>Tue, 11 Jun 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,8 +10,8 @@
         <language>en</language>
         <item>
             <title><![CDATA[UI Should Not Be The Bottleneck]]></title>
-            <link>https://openwebui.com/blog/ui-should-not-be-the-bottleneck</link>
-            <guid>https://openwebui.com/blog/ui-should-not-be-the-bottleneck</guid>
+            <link>https://doc.nullcore.com.br/blog/ui-should-not-be-the-bottleneck</link>
+            <guid>https://doc.nullcore.com.br/blog/ui-should-not-be-the-bottleneck</guid>
             <pubDate>Tue, 11 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[WIP]]></description>
             <content:encoded><![CDATA[<p>WIP</p>]]></content:encoded>

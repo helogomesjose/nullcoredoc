@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://openwebui.com/blog</id>
+    <id>https://doc.nullcore.com.br/blog</id>
     <title>Nullcore Blog</title>
     <updated>2024-06-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://openwebui.com/blog"/>
+    <link rel="alternate" href="https://doc.nullcore.com.br/blog"/>
     <subtitle>Nullcore Blog</subtitle>
-    <icon>https://openwebui.com/images/favicon.png</icon>
+    <icon>https://doc.nullcore.com.br/images/favicon.png</icon>
     <entry>
         <title type="html"><![CDATA[UI Should Not Be The Bottleneck]]></title>
-        <id>https://openwebui.com/blog/ui-should-not-be-the-bottleneck</id>
-        <link href="https://openwebui.com/blog/ui-should-not-be-the-bottleneck"/>
+        <id>https://doc.nullcore.com.br/blog/ui-should-not-be-the-bottleneck</id>
+        <link href="https://doc.nullcore.com.br/blog/ui-should-not-be-the-bottleneck"/>
         <updated>2024-06-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[WIP]]></summary>
         <content type="html"><![CDATA[<p>WIP</p>]]></content>
